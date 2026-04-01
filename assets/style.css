@@ -1,11 +1,17 @@
-.small-task{
-    font-size: 0.6rem;
+/* Some basics to make it easier to read. */
+body {
+	--spacing: 2em;
+
+	display: grid;
+	gap: var(--spacing);
+	margin: initial;
+	padding: var(--spacing);
 }
 
-.medium-task{
-    font-size: 1rem;
-}
-
-.large-task{
-    font-size: 3rem;
+form {
+	background-color: whitesmoke;
+	border-radius: calc(var(--spacing) / 2);
+	display: grid;
+	gap: var(--spacing);
+	padding: var(--spacing);
 }
