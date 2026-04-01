@@ -1,0 +1,11 @@
+.small-task{
+    font-size: 0.6rem;
+}
+
+.medium-task{
+    font-size: 1rem;
+}
+
+.large-task{
+    font-size: 3rem;
+}
