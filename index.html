@@ -9,17 +9,18 @@
 		<script defer src="assets/form-state.js"></script>
 	</head>
 	<body>
-		<aside>
-			<p><em>This is a <a href="https://github.com/typography-interaction-2526/forms-params-storage">demo/template repo</a> for working with <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">input</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select">select</a> elements, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/search">search</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams">URL params</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">web storage</a>.</em></p>
-		</aside>
-		<h1>Forms, Params, and Storage</h1>
+		<h1>Times</h1>
 		<!-- New element, who dis: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form -->
 		<form id="some-form">
 			<section>
 				<!-- Visible/accessible `label` connected through the `id`: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label -->
-				<label for="some-text">This is a basic text <code>&lt;input&gt;</code>:</label>
+				<label for="task-text">Task</label>
 				<!-- Different types can control what is allowed: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
-				<input id="some-text" name="some-text" placeholder="Some suggested text" required type="text">
+				<input id="task-text" name="task-text" placeholder="E.g. Cooking pasta" required type="text">
+			</section>
+			<section>
+				<label for="time-number">Minutes taken:</label>
+				<input type="time-number" id="time-number" name="minutes" placeholder="E.g. 10" required type="number"> 
 			</section>
 			<section>
 				<label for="some-option">And a dropdown <code>&lt;select&gt;</code>:</label>
