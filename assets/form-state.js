@@ -99,6 +99,10 @@
 // 	updateUrlParams()
 // })
 
+
+
+// I have commmented out Michael's pre-ready form code because it was a lot and I wanted to understand my form step-by-step, so I am starting below from scratch.
+
 document.querySelector('#some-form').onsubmit = (event) => {
     event.preventDefault();
     let formData = new FormData(document.querySelector('#some-form'));
@@ -115,3 +119,18 @@ document.querySelector('#some-form').onsubmit = (event) => {
 
     document.querySelector('#some-form').reset();
 }
+
+// For the above logic, I understood the first few lines of code by simply following Eric's tutorial on json in forms, specifically 28:14-31:12
+//https:www.loom.com/share/3f81aa35dde54e6fb28e7d301b76c396?t=1655
+
+// Once Eric continued to move past this point and get into the 'keys' and 'values' part of 'FormData,' I began to get confused. That is when I started to reference Gemini for help. I began by asking it more about the FormData element, after which it helped me understand the different ways you can use FormData to show data. This began to make more sense to me than the keys stuff in the tutorial. More specifically, I understood that they 'key' is basically the name of the object, and the 'value' is all the different inputs that come under a single 'key'. For example, 'task name' is my key and 'shower' would be my value. 
+
+// I then continued to chat with it by making up an example of a form that is not directly my project but has similar logic - sports and their difficulty levels. 
+
+// In the middle there was some basic syntax I messed up because I was understanding the logic, but another challenge I face with JS is that I don't understand what order to write the lines, even if I am slowly understanding what the different words mean. I was mashing up the submit syntax with the task list syntax, and it helped me fix that. 
+
+//A really big understanding it helped me come to, myself, whilst acting like my teacher, was the 'append' idea. I finally understood that to save the tasks on the empty div in my html, it has to 'add' an extra html element to the already entered inputs that the users are giving to the form. This is what causes them to then appear as individual new inputs in the previously empty div. 
+
+// With this sort of back-and-forth, it was able to help me understand the different steps I have to take to collect data once it has been inputted.
+
+// Link to this Gemini Conversation: https://gemini.google.com/share/0abdb9c1c3eb 
