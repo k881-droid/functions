@@ -15,3 +15,15 @@ form {
 	gap: var(--spacing);
 	padding: var(--spacing);
 }
+
+.small-task{
+	font-size: 0.5rem
+}
+
+.medium-task{
+	font-size: 2rem
+}
+
+.large-task{
+	font-size: 4rem
+}

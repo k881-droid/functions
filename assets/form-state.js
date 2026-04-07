@@ -99,7 +99,7 @@
 // 	updateUrlParams()
 // })
 
-
+// ------------------------------
 
 // I have commmented out Michael's pre-ready form code because it was a lot and I wanted to understand my form step-by-step, so I am starting below from scratch.
 
@@ -116,6 +116,26 @@ document.querySelector('#some-form').onsubmit = (event) => {
     let newListItem = document.createElement('li');
 
     newListItem.textContent = `Task: ${taskName} Minutes: ${taskTime}`
+
+    
+    // add comment explanation for this
+    
+    let className = '';
+    let timeNumber = Number(taskTime); 
+
+    if (timeNumber < 15) {
+        className = 'small-task';
+    } else if (timeNumber >= 15 && timeNumber <= 30) {
+        className = 'medium-task';
+    } else if (timeNumber > 30) {
+        className = 'large-task';
+    }
+
+    if (className !== '') {
+        newListItem.classList.add(className); 
+    }
+
+    // add comment explanation for this
 
     document.querySelector('#task-list').append(newListItem)
 
@@ -148,3 +168,4 @@ document.querySelector('#some-form').onsubmit = (event) => {
 }
 
 // continued to follow Eric's tutorial for the above chunk of code - assigning a value to each element so that it can be printed. I think this is necessary for the next step, which will be integrating this into localStorage (I assume we cannot add stuff to localStorage without a key and a value because that is how things are organized in it.)
+// Specifically 49:20 - 51:11
