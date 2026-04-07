@@ -103,6 +103,8 @@
 
 // I have commmented out Michael's pre-ready form code because it was a lot and I wanted to understand my form step-by-step, so I am starting below from scratch.
 
+let tasks = [];
+
 document.querySelector('#some-form').onsubmit = (event) => {
     event.preventDefault();
     let formData = new FormData(document.querySelector('#some-form'));
@@ -113,12 +115,10 @@ document.querySelector('#some-form').onsubmit = (event) => {
     
     let newListItem = document.createElement('li');
 
-    newListItem.textContent = `Task: ${taskName} | Minutes: ${taskTime}`;
+    newListItem.textContent = `Task: ${taskName} Minutes: ${taskTime}`
 
-    document.querySelector('#task-list').append(newListItem);
+    document.querySelector('#task-list').append(newListItem)
 
-    document.querySelector('#some-form').reset();
-}
 
 // For the above logic, I understood the first few lines of code by simply following Eric's tutorial on json in forms, specifically 28:14-31:12
 //https:www.loom.com/share/3f81aa35dde54e6fb28e7d301b76c396?t=1655
@@ -134,3 +134,19 @@ document.querySelector('#some-form').onsubmit = (event) => {
 // With this sort of back-and-forth, it was able to help me understand the different steps I have to take to collect data once it has been inputted.
 
 // Link to this Gemini Conversation: https://gemini.google.com/share/0abdb9c1c3eb 
+
+// Also, in between these steps, after I did it correctly, I still shortly ran into a typo which was causing a null error. I used Gemini to help trouble shoot that briefly. Link to this conversation: https://gemini.google.com/share/5bc6a2121bc4
+
+ 
+    let taskObject = {
+        task: taskName, 
+        time: taskTime, 
+    };
+
+    tasks.push(taskObject)
+    console.log(tasks)
+
+
+}
+
+// continued to follow Eric's tutorial for the above chunk of code - assigning a value to each element so that it can be printed. I think this is necessary for the next step, which will be integrating this into localStorage (I assume we cannot add stuff to localStorage without a key and a value because that is how things are organized in it.)
