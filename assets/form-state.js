@@ -141,12 +141,10 @@ document.querySelector('#some-form').onsubmit = (event) => {
     let taskObject = {
         task: taskName, 
         time: taskTime, 
-    };
+    }
 
     tasks.push(taskObject)
-    console.log(tasks)
-
-
+    console.log(tasks);
 }
 
 // continued to follow Eric's tutorial for the above chunk of code - assigning a value to each element so that it can be printed. I think this is necessary for the next step, which will be integrating this into localStorage (I assume we cannot add stuff to localStorage without a key and a value because that is how things are organized in it.)
