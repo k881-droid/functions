@@ -99,7 +99,19 @@
 // 	updateUrlParams()
 // })
 
-document.querySelector('form').onsubmit = (event) => {
-    event.preventDefault()
-    console.log(add)
+document.querySelector('#some-form').onsubmit = (event) => {
+    event.preventDefault();
+    let formData = new FormData(document.querySelector('#some-form'));
+   
+    let taskName = formData.get('task-text'); 
+    
+    let taskTime = formData.get('minutes'); 
+    
+    let newListItem = document.createElement('li');
+
+    newListItem.textContent = `Task: ${taskName} | Minutes: ${taskTime}`;
+
+    document.querySelector('#task-list').append(newListItem);
+
+    document.querySelector('#some-form').reset();
 }
