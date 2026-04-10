@@ -27,3 +27,7 @@ form {
 .large-task{
 	font-size: 4rem
 }
+
+ul{
+	list-style-type: none;
+}
