@@ -1,107 +1,7 @@
-// // Target your form.
-// let formElement = document.querySelector('#some-form')
-
-// // Function to match the form to URL/stored params.
-// let updateForm = (params) => {
-// 	// Parse into params:
-// 	// https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
-// 	params = new URLSearchParams(params)
-
-// 	// Our friend, the `forEach` loop:
-// 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-// 	params.forEach((value, key) => {
-// 		// Find them by their ID.
-// 		let inputOrSelect = document.getElementById(key)
-
-// 		if (inputOrSelect) {
-// 			// Set the actual input to the param value.
-// 			inputOrSelect.value = value
-// 		} else {
-// 			// Radios are a bit different, find them by `name` attribute.
-// 			document.querySelectorAll(`[name=${key}]`).forEach((element) => {
-// 				if (value == element.value) { // Check the one matching the param value.
-// 					element.checked = true
-// 				}
-// 			}
-// 		)
-// 		}
-// 	})
-
-// 	// And a callback! This function is defined over in `main.js`, for clarity.
-// 	stateCallback?.()
-// 	// The `?.` is optional chaining:
-// 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
-// }
-
-// // Function to save them to `localStorage`.
-// let storeParams = () => {
-// 	// Get the form data:
-// 	// https://developer.mozilla.org/en-US/docs/Web/API/FormData
-// 	let formParams = new FormData(formElement)
-
-// 	// Loop through each key/value pair.
-// 	formParams.forEach((value, key) => {
-// 		// And save them out to the browser:
-// 		// https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
-// 		localStorage.setItem(key, value)
-// 	})
-// }
-
-// // Function to update the URL from the form.
-// let updateUrlParams = () => {
-// 	let formParams = new FormData(formElement) // Get the form data.
-
-// 	formParams = new URLSearchParams(formParams) // Make it into params.
-// 	formParams = formParams.toString() // And then into a string.
-
-// 	// You could also write this as:
-// 	// let formParams = new URLSearchParams(new FormData(formElement)).toString()
-
-// 	// Update the URL with the params at the end.
-// 	history.replaceState(null, null, '?' + formParams)
-// 	// We use `history` here (instead of `location`) to not get into an infinite loop!
-// 	// https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState
-
-// 	// And also store them!
-// 	storeParams()
-
-// 	// And a callback!
-// 	stateCallback?.()
-// }
-
-
-
-// // First, check for query/params in the URL:
-// // https://developer.mozilla.org/en-US/docs/Web/API/Location/search
-// if (location.search) {
-// 	let urlParams = location.search // Get the query string.
-
-// 	updateForm(urlParams) // Update the form from these.
-// }
-// // Otherwise check for saved params in storage.
-// else if (localStorage.length > 0) {
-// 	let storedParams = Object.entries(localStorage) // Get the saved params.
-
-// 	updateForm(storedParams) // Update the form from these.
-// }
-
-
-// // Watch for events!
-// formElement.addEventListener('submit', (event) => {
-// 	// Don’t actually submit (which would refresh the page):
-// 	// https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
-// 	event.preventDefault()
-// })
-
-// // Run any time the form is modified:
-// // https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event
-// formElement.addEventListener('input', () => {
-// 	updateUrlParams()
-// })
 
 // ------------------------------
 
-// I have commmented out Michael's pre-ready form code because it was a lot and I wanted to understand my form step-by-step, so I am starting below from scratch.
+// I have removed Michael's form code that he gave to us because it was a lot and I wanted to understand my form step-by-step, so I am starting below from scratch.
 
 let tasks = [];
 
@@ -113,31 +13,9 @@ document.querySelector('#some-form').onsubmit = (event) => {
     
     let taskTime = formData.get('minutes'); 
     
-    let newListItem = document.createElement('li');
+    // let newListItem = document.createElement('li');
 
-    newListItem.textContent = `Task: ${taskName} Minutes: ${taskTime}`
-
-    
-    // add comment explanation for this
-    
-    let className = '';
-    let timeNumber = Number(taskTime); 
-
-    if (timeNumber < 15) {
-        className = 'small-task';
-    } else if (timeNumber >= 15 && timeNumber <= 30) {
-        className = 'medium-task';
-    } else if (timeNumber > 30) {
-        className = 'large-task';
-    }
-
-    if (className !== '') {
-        newListItem.classList.add(className); 
-    }
-
-    // add comment explanation for this
-
-    document.querySelector('#task-list').append(newListItem)
+    // newListItem.textContent = `Task: ${taskName} // Minutes: ${taskTime}`
 
 
 // For the above logic, I understood the first few lines of code by simply following Eric's tutorial on json in forms, specifically 28:14-31:12
@@ -157,15 +35,82 @@ document.querySelector('#some-form').onsubmit = (event) => {
 
 // Also, in between these steps, after I did it correctly, I still shortly ran into a typo which was causing a null error. I used Gemini to help trouble shoot that briefly. Link to this conversation: https://gemini.google.com/share/5bc6a2121bc4
 
+    
+    // let className = '';
+    // let timeNumber = Number(taskTime); 
+
+    // if (timeNumber < 15) {
+    //     className = 'small-task';
+    // } else if (timeNumber >= 15 && timeNumber <= 30) {
+    //     className = 'medium-task';
+    // } else if (timeNumber > 30) {
+    //     className = 'large-task';
+    // }
+
+    // if (className !== '') {
+    //     newListItem.classList.add(className); 
+    // }
+
+// For the above code, I didn't really ask for LLM help and came up with the logic myself, because I knew roughly the ranges I wanted to apply for the small, medium and large css classes to take effect. I used one of our first JS lectures to come up with this: https://typography-interaction-2526.github.io/topic/javascript/#loops 
+
+// And also mdn's lecture on if else logic to make sure I was using the correct syntax: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else#:~:text=English%20(US),Try%20it 
+
+
+    // document.querySelector('#task-list').append(newListItem)
+
  
     let taskObject = {
         task: taskName, 
         time: taskTime, 
     }
 
+    // get tasks from local storage
+
+    let tasks = localStorage.getItem('tasks')
+    
+    // tasks may not exist at this point 
+    if (!tasks) {
+    // if there are no tasks, set it to an empty array 
+      tasks = []
+    // if there are tasks, parse them from how they were stored in local storage
+    } else {
+      tasks = JSON.parse(tasks)
+    }
+
     tasks.push(taskObject)
-    console.log(tasks);
+
+    // store tasks in localStorage
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+    renderTasks()
 }
+
+let renderTasks = () => {
+    let taskList = document.querySelector('#task-list')
+    taskList.innerHTML = ''
+
+    let tasks = localStorage.getItem('tasks')
+    tasks = JSON.parse(tasks)
+
+    tasks.forEach((taskObject) => {
+      
+        let className = '';
+        taskObject.time = Number(taskObject.time); 
+
+        if (taskObject.time < 15) {
+        className = 'small-task';
+        } else if (taskObject.time >= 15 && taskObject.time <= 30) {
+        className = 'medium-task';
+        } else if (taskObject.time > 30) { className = 'large-task';
+        }
+        
+      let taskItem =
+      `<li class="${className}"> Task: ${taskObject.task} // Minutes: ${taskObject.time}</li>`
+
+      taskList.innerHTML += taskItem
+    })
+}
+
+renderTasks()
 
 // continued to follow Eric's tutorial for the above chunk of code - assigning a value to each element so that it can be printed. I think this is necessary for the next step, which will be integrating this into localStorage (I assume we cannot add stuff to localStorage without a key and a value because that is how things are organized in it.)
 // Specifically 49:20 - 51:11
