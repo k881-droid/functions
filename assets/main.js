@@ -25,13 +25,18 @@
 // cross out function
 let someForm = document.querySelector('#some-form')
 let taskList = document.querySelector('#task-list')
+let taskItem = document.querySelector('li')
 
 taskList.addEventListener('click', (event) => {
   if (event.target.tagName === 'LI') {
     event.target.classList.toggle('strikethrough');
   }
+  else if (event.target.tagName === 'SPAN') {
+  event.target.parentElement.classList.add('hide');
+  }
 })
 
-// close button function
+
+
 
 

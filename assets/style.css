@@ -42,6 +42,10 @@ li {
     padding: 1rem;
 }
 
+.hide{
+	display: none;
+}
+
 /* 2. Pull the X out of the text flow and pin it to the right */
 .close {
     position: absolute;
