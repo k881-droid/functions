@@ -28,6 +28,10 @@ form {
 	font-size: 4rem
 }
 
+.strikethrough{
+	text-decoration: line-through
+}
+
 ul{
 	list-style-type: none;
 }
