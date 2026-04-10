@@ -35,3 +35,22 @@ form {
 ul{
 	list-style-type: none;
 }
+
+/* Style the close button */
+li {
+    position: relative; 
+    padding: 1rem;
+}
+
+/* 2. Pull the X out of the text flow and pin it to the right */
+.close {
+    position: absolute;
+    inset-inline-end : 1rem; /* Pins it to the far right of the li */
+    cursor: pointer; /* Makes it look clickable (like a button) */
+    color: red; /* Optional: gives it a clear "delete" visual */
+	font-size: 2rem;
+}
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}

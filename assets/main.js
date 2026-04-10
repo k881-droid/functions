@@ -21,10 +21,17 @@
 //   }
 // }
 
-let taskList = document.querySelector('#task-list');
+
+// cross out function
+let someForm = document.querySelector('#some-form')
+let taskList = document.querySelector('#task-list')
 
 taskList.addEventListener('click', (event) => {
   if (event.target.tagName === 'LI') {
     event.target.classList.toggle('strikethrough');
   }
-});
+})
+
+// close button function
+
+

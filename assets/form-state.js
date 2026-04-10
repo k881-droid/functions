@@ -104,7 +104,7 @@ let renderTasks = () => {
         }
         
       let taskItem =
-      `<li class="${className}"> Task: ${taskObject.task} // Minutes: ${taskObject.time}</li>`
+      `<li class="${className}"> Task: ${taskObject.task} // Minutes: ${taskObject.time} <span class="close">X</span></li>`
 
       taskList.innerHTML += taskItem
     })
