@@ -94,7 +94,7 @@ document.querySelector('#some-form').onsubmit = (event) => {
         tasks = JSON.parse(tasks)           
 
         if (!tasks || tasks.length === 0) {                                       
-        taskList.innerHTML = '<li>No tasks yet — add one below!</li>'
+         taskList.innerHTML = '<li class="empty">No tasks yet — add one below!</li>'
         return                                         }          
 
     tasks.forEach((taskObject) => {

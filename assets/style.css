@@ -56,12 +56,20 @@ body {
 
 /* Style the close button */
 li {
-      position: relative;                                                       
-      padding: 1rem;
-      border-radius: 0.75rem;                                                   
-      display: flex;
-      align-items: center;
+    position: relative;                                                       
+    padding: 1rem;
+    border-radius: 0.75rem;                                                   
+    display: flex;
+    align-items: center;
   }
+
+li.empty {                                                                    
+    grid-column: 1 / -1;                                                      
+    background-color: transparent;                                            
+    font-size: 1rem;                        
+    color: #999;                                                              
+  } 
+
 
 .hide{
 	display: none;
@@ -79,5 +87,51 @@ li {
   background-color: #f44336;
   color: white;
 }
+
+ input {                                                                       
+      width: 100%;
+      padding: 0.75rem 1rem;                                                    
+      border: 1.5px solid #ddd;               
+      border-radius: 0.5rem;                                                    
+      font-size: 1rem;
+      background-color: white;                                                  
+      outline: none;
+      font-family: inherit;                                                     
+  }                                       
+
+  input:focus {                                                                 
+      border-color: #999;
+  }                                                                             
+                  
+  input::placeholder {
+      color: #bbb;
+      opacity: 1;                             
+  }                                       
+
+  label {                                                                       
+      font-size: 0.85rem;
+      font-weight: 600;                                                         
+      color: #555;                        
+      margin-bottom: 0.25rem;
+      display: block;                                                           
+  }
+
+ button {                                                                      
+      width: 100%;                                                              
+      padding: 0.75rem 1rem;                                                    
+      background-color: #1c1c1c;                                                
+      color: white;                                                             
+      border: none;                                                             
+      border-radius: 0.5rem;                                                    
+      font-size: 1rem;
+      cursor: pointer;                                                          
+      font-family: inherit;               
+  }
+                                                                                
+  button:hover {
+      background-color: #333;                                                   
+  }               
+
+
 
  
