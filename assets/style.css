@@ -35,7 +35,9 @@ form > section:first-child {
 form > section:last-child {
     position: fixed;
     inset-block-end: 3rem;
-    inset-inline: 40rem;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    inline-size: 420px;
     background-color: whitesmoke;
     padding: 1.5rem;
     display: flex;
@@ -199,5 +201,11 @@ button:hover {
     form > section:last-child {
         inset-inline: 1rem;
         inset-block-end: 1.5rem;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 601px) {
+    ul {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
