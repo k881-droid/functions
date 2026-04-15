@@ -108,6 +108,17 @@ li.empty {
   color: white;
 }
 
+.task-name {
+  display: block;                                                           
+  font-weight: 600;
+}                                                                             
+                                          
+  .task-time {
+   display: block;                                                           
+   font-size: 0.8em;
+   opacity: 0.7;                                                             
+  }  
+
   label {
       font-size: 0.7rem;                                                      
       font-weight: 700;                                                         

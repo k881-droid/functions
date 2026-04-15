@@ -163,10 +163,12 @@ document.querySelector('#some-form').onsubmit = (event) => {
 
 // The link to convo is in the main js file where I implemented the js
 
-  let taskItem =
-  `<li class="${className}" data-index="${tasks.indexOf(taskObject)}"
-  style="grid-column: span ${span}"> Task: ${taskObject.task} // Minutes:
-  ${taskObject.time} <span class="close">X</span></li>`
+  let taskItem = `<li class="${className}" 
+  data-index="${tasks.indexOf(taskObject)}" style="grid-column: span ${span}">  
+    <span class="task-name">${taskObject.task}</span>
+    <span class="task-time">${taskObject.time} min</span>
+    <span class="close">X</span>                                                
+  </li>`  
 
 
       taskList.innerHTML += taskItem
