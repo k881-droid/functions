@@ -71,7 +71,6 @@ ul {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 0.5rem;
-    height: 60vh;
   }
 
 /* Style the close button */
@@ -85,6 +84,7 @@ li {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+	
 }
 
 li.empty {                                                                    
