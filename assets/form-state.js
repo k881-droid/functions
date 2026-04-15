@@ -93,6 +93,12 @@ document.querySelector('#some-form').onsubmit = (event) => {
         let tasks = localStorage.getItem('tasks')
         tasks = JSON.parse(tasks)           
 
+// Before, if localStorage was empty the page was just blank. Now it checks if the tasks array is empty or doesn't exist yet — if so, it shows a  message and exits the function early with return so the loop doesn't run on nothing.   
+
+// I got this idea to show this guide sentence as Michael said there should be some sort of indicator or intro if a user is adding tasks for the first time. This is very simple and I can make it prettier and maybe more copy for the next run. 
+
+// To implement this I found this Stack overflow thread: https://stackoverflow.com/questions/61464941/display-message-if-array-is-empty 
+
         if (!tasks || tasks.length === 0) {                                       
          taskList.innerHTML = '<li class="empty">No tasks yet — add one below!</li>'
         return                                         }          
