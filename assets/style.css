@@ -201,6 +201,9 @@ button:hover {
     form > section:last-child {
         inset-inline: 1rem;
         inset-block-end: 1.5rem;
+        inset-inline-start: 1rem;
+        transform: none;
+        inline-size: auto;
     }
 }
 
