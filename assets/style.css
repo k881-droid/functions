@@ -9,47 +9,59 @@ body {
 }
 
  form {                                                                        
-      background-color: whitesmoke;                                             
-      border-radius: calc(var(--spacing) / 2);                                  
-      display: grid;
-      gap: var(--spacing);
-      padding: var(--spacing);
-      min-height: 100vh;
-      align-content: start;                   
+    background-color: whitesmoke;                                             
+    border-radius: calc(var(--spacing) / 2);                                  
+    display: grid;
+    gap: var(--spacing);
+    padding: var(--spacing);
+    min-height: 100vh;
+    align-content: start;                   
   }  
 
    form > section:last-child {                                                   
-      position: sticky;                                                         
-      bottom: 0;                              
-      background-color: whitesmoke;                                             
-      padding-bottom: var(--spacing);
+    position: sticky;                                                         
+    bottom: 0;                              
+    background-color: whitesmoke;                                             
+    padding-bottom: var(--spacing);
   }     
 
-.small-task{
-	font-size: 0.5rem
-}
+                                                                               
+  .small-task {                                                                 
+      background-color: #d4f1c4;                                                
+      font-size: 0.85rem;                                                       
+  }                                                                             
+                                                                                
+  .medium-task {  
+      background-color: #fde68a;
+      font-size: 1.25rem;                     
+  }                                       
 
-.medium-task{
-	font-size: 2rem
-}
-
-.large-task{
-	font-size: 4rem
-}
+  .large-task {                                                                 
+      background-color: #fca5a5;
+      font-size: 1.75rem;                                                       
+  } 
+       
 
 .strikethrough{
 	text-decoration: line-through
 }
 
-ul{
-	list-style-type: none;
-}
+  ul {                                                                          
+    list-style-type: none;                                                    
+    display: grid;                                                            
+    grid-template-columns: repeat(3, 1fr);                                    
+    gap: 0.5rem;                            
+    height: 60vh;                       
+  }  
 
 /* Style the close button */
 li {
-    position: relative; 
-    padding: 1rem;
-}
+      position: relative;                                                       
+      padding: 1rem;
+      border-radius: 0.75rem;                                                   
+      display: flex;
+      align-items: center;
+  }
 
 .hide{
 	display: none;
@@ -68,9 +80,4 @@ li {
   color: white;
 }
 
- form > section:last-child {                                                   
-      position: sticky;
-      bottom: 0;
-      background-color: whitesmoke;           
-      padding-bottom: var(--spacing);     
-  }
+ 

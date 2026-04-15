@@ -109,9 +109,13 @@ document.querySelector('#some-form').onsubmit = (event) => {
         } else if (taskObject.time > 30) { className = 'large-task';
         }
         
-     let taskItem =            
-      `<li class="${className}" data-index="${tasks.indexOf(taskObject)}"> Task: 
-      ${taskObject.task} // Minutes: ${taskObject.time} <span class="close">X</span></li>`  
+      let span = taskObject.time < 15 ? 1 : taskObject.time <= 30 ? 2 : 3;          
+                                                                                
+  let taskItem =                                                                
+  `<li class="${className}" data-index="${tasks.indexOf(taskObject)}"           
+  style="grid-column: span ${span}"> Task: ${taskObject.task} // Minutes:       
+  ${taskObject.time} <span class="close">X</span></li>`
+
 
       taskList.innerHTML += taskItem
     })
