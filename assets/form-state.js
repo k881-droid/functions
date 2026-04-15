@@ -77,6 +77,18 @@ document.querySelector('#some-form').onsubmit = (event) => {
       tasks = JSON.parse(tasks)
     }
 
+    // Explain logic behind limiting tasks when you have more time
+     if (tasks.length >= 12) {                                                     
+      alert('You have reached the max of 12 tasks')                             
+      return                                  
+    }                                                                             
+                  
+    let totalMinutes = tasks.reduce((total, task) => total + Number(task.time), 0)
+    if (totalMinutes + Number(taskTime) > 480) {
+      alert('Adding this task would exceed 480 minutes')                        
+      return                                  
+    }                                       
+   
     tasks.push(taskObject)
 
     // store tasks in localStorage
