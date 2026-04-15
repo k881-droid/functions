@@ -3,15 +3,15 @@
 
 // I have removed Michael's form code that he gave to us because it was a lot and I wanted to understand my form step-by-step, so I am starting below from scratch.
 
-let tasks = [];
+let tasks = []
 
 document.querySelector('#some-form').onsubmit = (event) => {
-    event.preventDefault();
-    let formData = new FormData(document.querySelector('#some-form'));
-   
-    let taskName = formData.get('task-text'); 
-    
-    let taskTime = formData.get('minutes'); 
+    event.preventDefault()
+    let formData = new FormData(document.querySelector('#some-form'))
+
+    let taskName = formData.get('task-text')
+
+    let taskTime = formData.get('minutes')
     
     // let newListItem = document.createElement('li');
 
@@ -121,6 +121,9 @@ document.querySelector('#some-form').onsubmit = (event) => {
         // let span = taskObject.time < 15 ? 1 : taskObject.time <= 30 ? 2 : 3;
         
     // I then decided to make it more detailed for more dynamic sizing + better user experience. 
+
+           let className = ''
+           taskObject.time = Number(taskObject.time)
 
            if (taskObject.time < 10) {
            className = 'xsmall-task'

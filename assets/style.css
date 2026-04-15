@@ -30,6 +30,11 @@ body {
   }                                                                             
                 
                                                                                
+  .xsmall-task {
+      background-color: #bbf7d0;
+      font-size: 0.75rem;
+  }
+
   .small-task {
       background-color: #d4f1c4;
       font-size: 0.85rem;
@@ -37,17 +42,28 @@ body {
 
   .medium-task {
       background-color: #fde68a;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
   }
 
   .large-task {
       background-color: #fca5a5;
+      font-size: 1.4rem;
+  }
+
+  .xlarge-task {
+      background-color: #f87171;
       font-size: 1.75rem;
-  } 
+  }
+
+  .xxlarge-task {
+      background-color: #dc2626;
+      color: white;
+      font-size: 2.25rem;
+  }
        
 
 .strikethrough{
-	text-decoration: line-through
+	text-decoration: line-through;
 }
 
   ul {
@@ -138,21 +154,3 @@ li.empty {
       background-color: #333;                                                   
   }               
 
-  .xsmall-task {
-      background-color: #bbf7d0;
-      font-size: 0.75rem;
-  }
-
-  .xlarge-task {
-      background-color: #f87171;
-      font-size: 1.75rem;
-  }
-
-  .xxlarge-task {
-      background-color: #dc2626;
-      color: white;
-      font-size: 2.25rem;
-  }
-
-
- 

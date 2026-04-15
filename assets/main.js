@@ -54,11 +54,11 @@ let taskItem = document.querySelector('li')
 // link to conversation with Gemini: https://gemini.google.com/share/f4ae59c98237 
 
     else if (event.target.tagName === 'SPAN') {                                 
-      let index = event.target.parentElement.dataset.index;
-      let tasks = JSON.parse(localStorage.getItem('tasks'));                    
-      tasks = tasks.filter((task, i) => i !== Number(index));
-      localStorage.setItem('tasks', JSON.stringify(tasks));                     
-      renderTasks();                          
+      let index = event.target.parentElement.dataset.index
+      let tasks = JSON.parse(localStorage.getItem('tasks'))
+      tasks = tasks.filter((task, i) => i !== Number(index))
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+      renderTasks()
     }                                                                           
   })              
       
