@@ -8,61 +8,70 @@ body {
 	padding: var(--spacing);
 }
 
- form {                                                                        
-    background-color: whitesmoke;                                             
-    border-radius: calc(var(--spacing) / 2);                                  
+form {
+    background-color: whitesmoke;
+    border-radius: calc(var(--spacing) / 2);
     display: grid;
     gap: var(--spacing);
     padding: var(--spacing);
-    min-height: 100vh;
-    align-content: start;                   
-  }  
+    padding-block-end: 14rem;
+    min-block-size: 100vh;
+}
 
- form > section:last-child {             
-      position: sticky;                                                         
-      bottom: 0;                                                                
-      background-color: whitesmoke;                                             
-      padding: 1.5rem;                                                          
-      display: flex;                                                            
-      flex-direction: column;                                                   
-      gap: 1.25rem;                                                             
-      border-top: 1.5px solid #e0e0e0;        
-  }                                                                             
-                
-                                                                               
-  .xsmall-task {
-      background-color: #bbf7d0;
-      font-size: 0.75rem;
-  }
+form > section:first-child {
+    overflow-y: auto;
+    min-block-size: 0;
+}
 
-  .small-task {
-      background-color: #d4f1c4;
-      font-size: 0.85rem;
-  }
+form > section:last-child {
+    position: fixed;
+    inset-block-end: 3rem;
+    inset-inline: 40rem;
+    background-color: whitesmoke;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
 
-  .medium-task {
-      background-color: #fde68a;
-      font-size: 1.1rem;
-  }
 
-  .large-task {
-      background-color: #fca5a5;
-      font-size: 1.4rem;
-  }
+.xsmall-task {
+    background-color: #D8F382;
+    font-size: 0.75rem;
+}
 
-  .xlarge-task {
-      background-color: #f87171;
-      font-size: 1.75rem;
-  }
+.small-task {
+    background-color: #FF99DC;
+    font-size: 0.85rem;
+}
 
-  .xxlarge-task {
-      background-color: #dc2626;
-      color: white;
-      font-size: 2.25rem;
-  }
-       
+.medium-task {
+    background-color: #826DEE;
+    color: white;
+    font-size: 1.1rem;
+}
 
-.strikethrough{
+.large-task {
+    background-color: #EB4213;
+    color: white;
+    font-size: 1.4rem;
+}
+
+.xlarge-task {
+    background-color: #FFD93D;
+    font-size: 1.75rem;
+}
+
+.xxlarge-task {
+    background-color: #a02e0c;
+    color: white;
+    font-size: 2.25rem;
+}
+
+
+.strikethrough {
 	text-decoration: line-through;
 }
 
@@ -71,7 +80,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 0.5rem;
-  }
+}
 
 /* Style the close button */
 
@@ -84,88 +93,87 @@ li {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-	
 }
 
-li.empty {                                                                    
-    grid-column: 1 / -1;                                                      
-    background-color: transparent;                                            
-    font-size: 1rem;                        
-    color: #999;                                                              
-  } 
+li.empty {
+    grid-column: 1 / -1;
+    background-color: transparent;
+    font-size: 1rem;
+    color: #999;
+}
 
 
-.hide{
+.hide {
 	display: none;
 }
 
 /* 2. Pull the X out of the text flow and pin it to the right */
 .close {
     position: absolute;
-    inset-inline-end : 1rem; /* Pins it to the far right of the li */
-    cursor: pointer; /* Makes it look clickable (like a button) */
-    color: red; /* Optional: gives it a clear "delete" visual */
-	font-size: 2rem;
+    inset-inline-end: 1rem;
+    cursor: pointer;
+    color: red;
+    font-size: 2rem;
 }
+
 .close:hover {
-  background-color: #f44336;
-  color: white;
+    background-color: #f44336;
+    color: white;
 }
 
 .task-name {
-  display: block;                                                           
-  font-weight: 600;
-}                                                                             
-                                          
+    display: block;
+    font-weight: 600;
+}
+
 .task-time {
-   display: block;                                                           
-   font-size: 0.8em;
-   opacity: 0.7;                                                             
-}  
+    display: block;
+    font-size: 0.8em;
+    opacity: 0.7;
+}
 
 label {
-    font-size: 0.7rem;                                                      
-    font-weight: 700;                                                         
-    text-transform: uppercase;          
-    letter-spacing: 0.1em;                                                    
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     color: #aaa;
-    display: block;                                                         
-    margin-bottom: 0.35rem;                                                   
-}                                           
-                                                                                
-input {         
-    width: 100%;
-    padding: 0.8rem 1rem;                                                   
-    border: 1.5px solid #e8e8e8;                                              
-    border-radius: 0.6rem;      
-    font-size: 1rem;                                                          
-    background-color: white;            
+    display: block;
+    margin-block-end: 0.35rem;
+}
+
+input {
+    inline-size: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+    background-color: white;
     outline: none;
     font-family: inherit;
-    color: #1c1c1c;                                                         
-}                                                                             
-                                  
-input:focus {                                                                 
+    color: #1c1c1c;
+}
+
+input:focus {
     border-color: #1c1c1c;
-}                                           
-                                          
+}
+
 input::placeholder {
     color: #ccc;
-}        
-
-button {                                                                      
-    width: 100%;                                                              
-    padding: 0.75rem 1rem;                                                    
-    background-color: #1c1c1c;                                                
-    color: white;                                                             
-    border: none;                                                             
-    border-radius: 0.5rem;                                                    
-    font-size: 1rem;
-    cursor: pointer;                                                          
-    font-family: inherit;               
 }
-                                                                                
-  button:hover {
-    background-color: #333;                                                   
-  }               
 
+button {
+    inline-size: 100%;
+    padding: 0.75rem 1rem;
+    background-color: #1c1c1c;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button:hover {
+    background-color: #333;
+}
