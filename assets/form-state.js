@@ -104,19 +104,52 @@ document.querySelector('#some-form').onsubmit = (event) => {
         return                                         }          
 
     tasks.forEach((taskObject) => {
+
+    // Came up with dynamic sizing logic myself using if else logic, initially it was done in a minimal way below using only ranges that differentiated b/w 15, 30, and 60.
       
-        let className = '';
-        taskObject.time = Number(taskObject.time); 
+        // let className = ''
+        // taskObject.time = Number(taskObject.time)
 
-        if (taskObject.time < 15) {
-            className = 'small-task';
-        } else if (taskObject.time <= 30) {
-            className = 'medium-task';
-        } else {
-            className = 'large-task';
-        }
+        // if (taskObject.time < 15) {
+        //     className = 'small-task'
+        // } else if (taskObject.time <= 30) {
+        //     className = 'medium-task'
+        // } else {
+        //     className = 'large-task'
+        // }
 
-        let span = taskObject.time < 15 ? 1 : taskObject.time <= 30 ? 2 : 3;          
+        // let span = taskObject.time < 15 ? 1 : taskObject.time <= 30 ? 2 : 3;
+        
+    // I then decided to make it more detailed for more dynamic sizing + better user experience. 
+
+           if (taskObject.time < 10) {
+           className = 'xsmall-task'
+           } else if (taskObject.time < 20) {
+           className = 'small-task'
+           } else if (taskObject.time < 30) {
+           className = 'medium-task'
+           } else if (taskObject.time < 45) {
+           className = 'large-task'
+           } else if (taskObject.time < 60) {
+           className = 'xlarge-task'
+           } else {
+           className = 'xxlarge-task'
+           }
+
+    let span                                                                    
+           if (taskObject.time < 10) {             
+           span = 1                                                               
+           } else if (taskObject.time < 20) {                                            
+           span = 2                                                                
+           } else if (taskObject.time < 30) {                                            
+           span = 3  
+           } else if (taskObject.time < 45) {
+           span = 4                               
+           } else if (taskObject.time < 60) {      
+           span = 5
+           } else {                                                                      
+           span = 6
+           }                
       
 // For the below code, I introduced a new concept which I found through Michael's link on our slack conversation. I asked how I could remove the task using the 'x' permanently, and he pointed me to the array (filter) method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 
 

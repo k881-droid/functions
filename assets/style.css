@@ -50,13 +50,13 @@ body {
 	text-decoration: line-through
 }
 
-  ul {                                                                          
-    list-style-type: none;                                                    
-    display: grid;                                                            
-    grid-template-columns: repeat(3, 1fr);                                    
-    gap: 0.5rem;                            
-    height: 60vh;                       
-  }  
+  ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+    height: 60vh;
+  }
 
 /* Style the close button */
 li {
@@ -138,6 +138,21 @@ li.empty {
       background-color: #333;                                                   
   }               
 
+  .xsmall-task {
+      background-color: #bbf7d0;
+      font-size: 0.75rem;
+  }
+
+  .xlarge-task {
+      background-color: #f87171;
+      font-size: 1.75rem;
+  }
+
+  .xxlarge-task {
+      background-color: #dc2626;
+      color: white;
+      font-size: 2.25rem;
+  }
 
 
  
