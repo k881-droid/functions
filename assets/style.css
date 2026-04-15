@@ -8,6 +8,15 @@ body {
 	padding: var(--spacing);
 }
 
+
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #1c1c1c;
+}
+
 form {
     background-color: whitesmoke;
     border-radius: calc(var(--spacing) / 2);
@@ -176,4 +185,19 @@ button {
 
 button:hover {
     background-color: #333;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+    }
+
+    ul {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    form > section:last-child {
+        inset-inline: 1rem;
+        inset-block-end: 1.5rem;
+    }
 }
