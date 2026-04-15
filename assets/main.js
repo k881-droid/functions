@@ -31,7 +31,10 @@ let someForm = document.querySelector('#some-form')
 let taskList = document.querySelector('#task-list')
 let taskItem = document.querySelector('li')
 
- taskList.addEventListener('click', (event) => {                               
+ taskList.addEventListener('click', (event) => {    
+  
+  // Added an extra condition so the strikethrough only triggers on real task items, not the empty state message. classList.contains('empty') checks if the clicked item has the empty class — if it does, the whole condition is false and nothing happens.
+
     if (event.target.tagName === 'LI' &&  
   !event.target.classList.contains('empty')) {                                  
       event.target.classList.toggle('strikethrough');                           
