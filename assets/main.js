@@ -36,6 +36,20 @@ let taskItem = document.querySelector('li')
   !event.target.classList.contains('empty')) {                                  
       event.target.classList.toggle('strikethrough');                           
     }
+
+// previously this else if state was referring the span simply to a 'hide' class. upon taking gemini's assistance, i was able to understand how to use data index and do the following (this is my understanding of what's happening, Gemini did not tell me this to this extent):
+
+// first it reads the index number stored on the <li> — this tells us which task is clicked                                                                    
+// Get the full task list from localStorage and convert it from text back into an array using the parse thing
+
+// Go through the array and keep every task EXCEPT the one whose position matches the index we just read                                              
+
+// Save the updated array back to localStorage                              
+
+// Re-render the list so the UI matches what's now in localStorage
+
+// link to conversation with Gemini: https://gemini.google.com/share/f4ae59c98237 
+
     else if (event.target.tagName === 'SPAN') {                                 
       let index = event.target.parentElement.dataset.index;
       let tasks = JSON.parse(localStorage.getItem('tasks'));                    

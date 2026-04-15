@@ -111,7 +111,16 @@ document.querySelector('#some-form').onsubmit = (event) => {
         }
 
         let span = taskObject.time < 15 ? 1 : taskObject.time <= 30 ? 2 : 3;          
-                                                                                
+      
+// For the below code, I introduced a new concept which I found through Michael's link on our slack conversation. I asked how I could remove the task using the 'x' permanently, and he pointed me to the array (filter) method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 
+
+// Following this, I was reading this mdn documentation and then came across some 'index' method - it basically is when a number is given to a piece of information so that that single piece of information can be identified and referred to: 
+// https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes 
+
+// I then asked Gemini how I could incorporate this syntax into my current code, I understood the logic just needed help including it in the js syntax. I added the change to the html myself before asking gemini as that was easy. 
+
+// The link to convo is in the main js file where I implemented the js
+
   let taskItem =
   `<li class="${className}" data-index="${tasks.indexOf(taskObject)}"
   style="grid-column: span ${span}"> Task: ${taskObject.task} // Minutes:
