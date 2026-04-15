@@ -3,7 +3,7 @@
 	<head>
 		<title>Times</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- <link href="assets/reset.css" rel="stylesheet"> -->
+		<link href="assets/reset.css" rel="stylesheet">
 		<link href="assets/style.css" rel="stylesheet">
 		<script defer src="assets/form-state.js"></script>
 		<script defer src="assets/main.js"></script>
@@ -12,27 +12,25 @@
 		<h1>Times</h1>
 		<!-- New element, who dis: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form -->
 		
-		<form id="some-form">
-			<section>
-				<!-- Visible/accessible `label` connected through the `id`: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label -->
-				<label for="task-text">Task</label>
-				<!-- Different types can control what is allowed: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
-				<input id="task-text" name="task-text" placeholder="E.g. Cooking pasta" required type="text">
-
-				<label for="time-number">Minutes taken:</label>
-				<input id="time-number" name="minutes" placeholder="E.g. 10" required type="number"> 
-
-			</section>
-
-			<section>
-				<button id="add">Add Task</button>
-			</section>
-            
-            <section>
-				<ul id="task-list"></ul>
-			</section>
-
-		</form>
+		 <form id="some-form">
+      <section>                                                                 
+          <ul id="task-list"></ul>        
+      </section>
+                                                                                
+      <section>
+          <label for="task-text">Task</label>                                   
+          <input id="task-text" name="task-text" placeholder="E.g. Cooking 
+  pasta" required type="text">                
+                                          
+          <label for="time-number">Minutes taken:</label>                       
+          <input id="time-number" name="minutes" placeholder="E.g. 10" required 
+  type="number">                                                                
+      </section>                                                                
+                  
+      <section>                                                                 
+          <button id="add">Add Task</button>
+      </section>                                                                
+         </form>     
 
 	</body>
 </html>

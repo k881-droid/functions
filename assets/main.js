@@ -22,20 +22,27 @@
 // }
 
 
-// cross out function
+// cross out function - comments of links that assisted to be added 
+// https://www.w3schools.com/howto/howto_js_todolist.asp
+// https://gemini.google.com/share/88834d47de2c 
+
+
 let someForm = document.querySelector('#some-form')
 let taskList = document.querySelector('#task-list')
 let taskItem = document.querySelector('li')
 
 taskList.addEventListener('click', (event) => {
   if (event.target.tagName === 'LI') {
-    event.target.classList.toggle('strikethrough');
+    event.target.classList.toggle('strikethrough')
   }
-  else if (event.target.tagName === 'SPAN') {
-  event.target.parentElement.classList.add('hide');
+   else if (event.target.tagName === 'SPAN') {                                   
+    let index = event.target.parentElement.dataset.index;                       
+    let tasks = JSON.parse(localStorage.getItem('tasks'))
+    tasks = tasks.filter((task, i) => i !== Number(index))
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+    renderTasks();                                                              
   }
 })
-
 
 
 

@@ -84,12 +84,18 @@ document.querySelector('#some-form').onsubmit = (event) => {
     renderTasks()
 }
 
-let renderTasks = () => {
-    let taskList = document.querySelector('#task-list')
-    taskList.innerHTML = ''
+// explain use of AI to fix this bug: https://gemini.google.com/share/62537752a5f8 
 
-    let tasks = localStorage.getItem('tasks')
-    tasks = JSON.parse(tasks)
+ let renderTasks = () => {                                                     
+        let taskList = document.querySelector('#task-list')
+        taskList.innerHTML = ''
+
+        let tasks = localStorage.getItem('tasks')
+        tasks = JSON.parse(tasks)           
+
+        if (!tasks || tasks.length === 0) {                                       
+        taskList.innerHTML = '<li>No tasks yet — add one below!</li>'
+        return                                         }          
 
     tasks.forEach((taskObject) => {
       
@@ -103,8 +109,9 @@ let renderTasks = () => {
         } else if (taskObject.time > 30) { className = 'large-task';
         }
         
-      let taskItem =
-      `<li class="${className}"> Task: ${taskObject.task} // Minutes: ${taskObject.time} <span class="close">X</span></li>`
+     let taskItem =            
+      `<li class="${className}" data-index="${tasks.indexOf(taskObject)}"> Task: 
+      ${taskObject.task} // Minutes: ${taskObject.time} <span class="close">X</span></li>`  
 
       taskList.innerHTML += taskItem
     })

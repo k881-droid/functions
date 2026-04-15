@@ -8,13 +8,15 @@ body {
 	padding: var(--spacing);
 }
 
-form {
-	background-color: whitesmoke;
-	border-radius: calc(var(--spacing) / 2);
-	display: grid;
-	gap: var(--spacing);
-	padding: var(--spacing);
-}
+ form {
+      background-color: whitesmoke;                                             
+      border-radius: calc(var(--spacing) / 2);
+      display: grid;                                                            
+      gap: var(--spacing);                
+      padding: var(--spacing);
+      min-height: 100vh;                                                        
+      align-content: start;                   
+  }    
 
 .small-task{
 	font-size: 0.5rem
