@@ -103,17 +103,18 @@ document.querySelector('#some-form').onsubmit = (event) => {
         taskObject.time = Number(taskObject.time); 
 
         if (taskObject.time < 15) {
-        className = 'small-task';
-        } else if (taskObject.time >= 15 && taskObject.time <= 30) {
-        className = 'medium-task';
-        } else if (taskObject.time > 30) { className = 'large-task';
+            className = 'small-task';
+        } else if (taskObject.time <= 30) {
+            className = 'medium-task';
+        } else {
+            className = 'large-task';
         }
-        
-      let span = taskObject.time < 15 ? 1 : taskObject.time <= 30 ? 2 : 3;          
+
+        let span = taskObject.time < 15 ? 1 : taskObject.time <= 30 ? 2 : 3;          
                                                                                 
-  let taskItem =                                                                
-  `<li class="${className}" data-index="${tasks.indexOf(taskObject)}"           
-  style="grid-column: span ${span}"> Task: ${taskObject.task} // Minutes:       
+  let taskItem =
+  `<li class="${className}" data-index="${tasks.indexOf(taskObject)}"
+  style="grid-column: span ${span}"> Task: ${taskObject.task} // Minutes:
   ${taskObject.time} <span class="close">X</span></li>`
 
 

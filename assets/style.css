@@ -28,22 +28,21 @@ body {
       gap: 1.25rem;                                                             
       border-top: 1.5px solid #e0e0e0;        
   }                                                                             
-                    
-
+                
                                                                                
-  .small-task {                                                                 
-      background-color: #d4f1c4;                                                
-      font-size: 0.85rem;                                                       
-  }                                                                             
-                                                                                
-  .medium-task {  
-      background-color: #fde68a;
-      font-size: 1.25rem;                     
-  }                                       
+  .small-task {
+      background-color: #d4f1c4;
+      font-size: 0.85rem;
+  }
 
-  .large-task {                                                                 
+  .medium-task {
+      background-color: #fde68a;
+      font-size: 1.25rem;
+  }
+
+  .large-task {
       background-color: #fca5a5;
-      font-size: 1.75rem;                                                       
+      font-size: 1.75rem;
   } 
        
 
