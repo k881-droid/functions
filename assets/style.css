@@ -8,15 +8,22 @@ body {
 	padding: var(--spacing);
 }
 
- form {
+ form {                                                                        
       background-color: whitesmoke;                                             
-      border-radius: calc(var(--spacing) / 2);
-      display: grid;                                                            
-      gap: var(--spacing);                
+      border-radius: calc(var(--spacing) / 2);                                  
+      display: grid;
+      gap: var(--spacing);
       padding: var(--spacing);
-      min-height: 100vh;                                                        
+      min-height: 100vh;
       align-content: start;                   
-  }    
+  }  
+
+   form > section:last-child {                                                   
+      position: sticky;                                                         
+      bottom: 0;                              
+      background-color: whitesmoke;                                             
+      padding-bottom: var(--spacing);
+  }     
 
 .small-task{
 	font-size: 0.5rem
@@ -60,3 +67,10 @@ li {
   background-color: #f44336;
   color: white;
 }
+
+ form > section:last-child {                                                   
+      position: sticky;
+      bottom: 0;
+      background-color: whitesmoke;           
+      padding-bottom: var(--spacing);     
+  }
