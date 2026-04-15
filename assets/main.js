@@ -31,18 +31,20 @@ let someForm = document.querySelector('#some-form')
 let taskList = document.querySelector('#task-list')
 let taskItem = document.querySelector('li')
 
-taskList.addEventListener('click', (event) => {
-  if (event.target.tagName === 'LI') {
-    event.target.classList.toggle('strikethrough')
-  }
-   else if (event.target.tagName === 'SPAN') {                                   
-    let index = event.target.parentElement.dataset.index;                       
-    let tasks = JSON.parse(localStorage.getItem('tasks'))
-    tasks = tasks.filter((task, i) => i !== Number(index))
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-    renderTasks();                                                              
-  }
-})
+ taskList.addEventListener('click', (event) => {                               
+    if (event.target.tagName === 'LI' &&  
+  !event.target.classList.contains('empty')) {                                  
+      event.target.classList.toggle('strikethrough');                           
+    }
+    else if (event.target.tagName === 'SPAN') {                                 
+      let index = event.target.parentElement.dataset.index;
+      let tasks = JSON.parse(localStorage.getItem('tasks'));                    
+      tasks = tasks.filter((task, i) => i !== Number(index));
+      localStorage.setItem('tasks', JSON.stringify(tasks));                     
+      renderTasks();                          
+    }                                                                           
+  })              
+      
 
 
 
