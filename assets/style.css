@@ -150,7 +150,6 @@ label {
     letter-spacing: 0.1em;
     color: #aaa;
     display: block;
-    margin-block-end: 0.35rem;
 }
 
 input {
@@ -216,16 +215,17 @@ button:hover {
   }                                                                             
                   
   form > section:last-child.open {            
-      display: flex;                      
+      display: flex;   
+      gap: 0.8rem;                    
       z-index: 99;
+      padding: 0.8rem;
   } 
-    }
 
-    ul {
+  ul {
         grid-template-columns: repeat(3, 1fr);
-    }
+   }
 
-    form > section:last-child {
+  form > section:last-child {
         inset-inline: 1rem;
         inset-block-end: 1.5rem;
         inset-inline-start: 1rem;
@@ -233,10 +233,13 @@ button:hover {
         inline-size: auto;
     }
 
+    input{
+        padding: 0.5rem;
+    }
+}
 
 @media (601px <= width <= 1024px) {
     ul {
         grid-template-columns: repeat(4, 1fr);
     }
-}
 }
