@@ -189,9 +189,36 @@ button:hover {
     background-color: #333;
 }
 
+#mobile-add-btn{
+    display: none;
+}
+
 @media (width < 600px) {
     body {
         padding: 1rem;
+    }
+
+    #mobile-add-btn{
+        display: block;                                                       
+        position: fixed;                                                      
+        inset-block-end: 2rem;                                                
+        inset-inline-end: 2rem;
+        inline-size: 3.5rem;                                                  
+        block-size: 3.5rem;
+        border-radius: 50%;                 
+        font-size: 2rem;                
+        line-height: 1;
+        z-index: 100;                        
+  }                                                                             
+                  
+  form > section:last-child {                                                   
+      display: none;
+  }                                                                             
+                  
+  form > section:last-child.open {            
+      display: flex;                      
+      z-index: 99;
+  } 
     }
 
     ul {
@@ -205,10 +232,11 @@ button:hover {
         transform: none;
         inline-size: auto;
     }
-}
+
 
 @media (601px <= width <= 1024px) {
     ul {
         grid-template-columns: repeat(4, 1fr);
     }
+}
 }

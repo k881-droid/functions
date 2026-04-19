@@ -60,7 +60,15 @@ let taskItem = document.querySelector('li')
       localStorage.setItem('tasks', JSON.stringify(tasks))
       renderTasks()
     }                                                                           
+  })         
+  
+   let mobileBtn = document.querySelector('#mobile-add-btn')
+  let formSection = document.querySelector('form > section:last-child')
+                                                                                
+  mobileBtn.addEventListener('click', () => { 
+      formSection.classList.toggle('open')                                      
   })              
+                                                                 
       
 
 
