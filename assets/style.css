@@ -50,12 +50,12 @@ form > section:last-child {
 
 .xsmall-task {
     background-color: #D8F382;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
 
 .small-task {
     background-color: #FF99DC;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
 }
 
 .medium-task {
