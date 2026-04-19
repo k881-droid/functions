@@ -135,6 +135,21 @@ document.querySelector('#some-form').onsubmit = (event) => {
     // store tasks in localStorage
     localStorage.setItem('tasks', JSON.stringify(tasks))
     renderTasks()
+
+// RESET FORM FLOW FUNCTIONS 
+// Each of these ideas for improved usability was given to me by Michael. I just googled scroll behaviours mdn and focus for inputs on mdn and implemented accordingly. 
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView 
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus 
+
+// Upon submission, form scrolls back up to the first task
+    document.querySelector('#task-list').scrollIntoView({ behavior: 'smooth' })
+// Upon submission, form focuses on the first input
+    document.querySelector('#task-text').focus()   
+// Upon submission, form clears so user can add more tasks
+    event.target.reset()  
+// Upon submission, all minute buttons are unpressed
+    minuteBtns.forEach((b) => b.classList.remove('active'))                                                             
+
 }
 
 // RENDER TASKS FUNCTION
@@ -188,7 +203,7 @@ document.querySelector('#some-form').onsubmit = (event) => {
 
         // let span = taskObject.time < 15 ? 1 : taskObject.time <= 30 ? 2 : 3;
         
-    // I then decided to make it more detailed for more dynamic sizing + better user experience. 
+// I then decided to make it more detailed for more dynamic sizing + better user experience. 
 
            let className = ''
            taskObject.time = Number(taskObject.time)
