@@ -26,12 +26,12 @@ let taskItem = document.querySelector('li')
   
   // Added an extra condition so the strikethrough only triggers on real task items, not the empty state message. classList.contains('empty') checks if the clicked item has the empty class — if it does, the whole condition is false and nothing happens. Did this myself because it follows basic class techniques.
 
-    if (event.target.tagName === 'LI' &&  
-  !event.target.classList.contains('empty')) {                                  
-      event.target.classList.toggle('strikethrough');                           
+    if (event.target.tagName === 'LI' &&
+  !event.target.classList.contains('empty')) {
+      event.target.classList.toggle('strikethrough');
     }
 
-// DELETING FROM LOCAL STORAGE 
+// DELETING FROM LOCAL STORAGE
 
 //previously the else if state was referring the span simply to a 'hide' class. After going through the mdn documentation on (filter) that Michael sent me, and then further finding that items can have 'indexes' in those documents, I tried to use that to delete a specific <li>. I used gemini's assistance to understand this further after struggling with the syntax. I was able to understand how to use data index and do the following to actually delete it from localStorage.
 
