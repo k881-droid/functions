@@ -3,6 +3,8 @@
 
 // I have removed Michael's form code that he gave to us because it was a lot and I wanted to understand my form step-by-step, so I am starting below from scratch.
 
+// INITIAL LIST APPROACH, MOSTLY COMMENTED OUT BECAUSE I CHANGED IT A LITTLE LATER ON
+
 let tasks = []
 
 document.querySelector('#some-form').onsubmit = (event) => {
@@ -12,13 +14,15 @@ document.querySelector('#some-form').onsubmit = (event) => {
     let taskName = formData.get('task-text')
 
     let taskTime = formData.get('minutes')
+
+    // For my initial approach, I attempted to create list items in the following manner - creating the variables above and then using textContent to generate the output list items.
     
     // let newListItem = document.createElement('li');
 
     // newListItem.textContent = `Task: ${taskName} // Minutes: ${taskTime}`
 
 
-// For the above logic, I understood the first few lines of code by simply following Eric's tutorial on json in forms, specifically 28:14-31:12
+// For this logic, I understood the first few lines of code by simply following Eric's tutorial on json in forms, specifically 28:14-31:12
 //https:www.loom.com/share/3f81aa35dde54e6fb28e7d301b76c396?t=1655
 
 // Once Eric continued to move past this point and get into the 'keys' and 'values' part of 'FormData,' I began to get confused. That is when I started to reference Gemini for help. I began by asking it more about the FormData element, after which it helped me understand the different ways you can use FormData to show data. This began to make more sense to me than the keys stuff in the tutorial. More specifically, I understood that they 'key' is basically the name of the object, and the 'value' is all the different inputs that come under a single 'key'. For example, 'task name' is my key and 'shower' would be my value. 
@@ -56,9 +60,12 @@ document.querySelector('#some-form').onsubmit = (event) => {
 // And also mdn's lecture on if else logic to make sure I was using the correct syntax: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else#:~:text=English%20(US),Try%20it 
 
 
-    // document.querySelector('#task-list').append(newListItem)
+// NEW APPROACH
 
- 
+// I moved away from the above approach because appending directly to the DOM meant tasks would disappear on page refresh — nothing was being saved. I switched to storing tasks in LocalStorage first, then letting renderTasks() rebuild the entire list from scratch every time. Again, this was simply altered using Eric's tutorial after I went back and watched it.
+
+// This meant the createElement + append logic was no longer needed here and moved into renderTasks() instead (this is why I did not enitrely delete the above explanations and dead code, it was linked to how I eventually came to the new approach).
+
     let taskObject = {
         task: taskName, 
         time: taskTime, 
@@ -77,17 +84,51 @@ document.querySelector('#some-form').onsubmit = (event) => {
       tasks = JSON.parse(tasks)
     }
 
-    // Explain logic behind limiting tasks when you have more time
+// TASK LIMIT FUNCTION 
+
+// Before pushing a new task, I check how many tasks are already in the array using .length - the length feature is something I picked up on during our links project and also found it again on mdn when trying to see how to identify how long an array is: 
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length 
+
+// If there are already 12, I stop the function early with return so nothing gets added.
+
+// I decided to limit number of tasks to 12 to make the list realistic and achievable for the user given the number of hours they have in a day.
+
+// I used an alert to make it clear to the user why their task wasn't saved.
+
+// Picked up on the alert method from class: https://typography-interaction-2526.github.io/topic/javascript/#2-wrapped-in-script-tags
+
+
      if (tasks.length >= 12) {                                                     
       alert('You have reached the max of 12 tasks')                             
       return                                  
     }                                                                             
-                  
+// MINUTES LIMIT FUNCTION
+
+// For the minutes, I also wanted to limit it to a certain number of minutes which one would have in a regular working day. 480 minutes seemed reasonable as that is 8 hours, which is max how much time you could spend working realistically, because you have to sleep etc. 
+
+// I found out how to create this function by simply Googling 'how to sum array values javascript' and coming across this mdn explanation of reduce. 
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+
+// At first I did not understand what 'initialValue' and 'accumulator' were, I just asked Gemini what those mean: https://gemini.google.com/share/a64cb68cc93f 
+
+// I simply then rephrased the mdn function for my task array:
+
+// In mdn, they declare an array at the beginning of the function, but mine has already been declared at the top of this file - 'tasks.'
+// I then declare an initial value just like them.
+
+    let initalValue = 0
+
+// Next I create a variable for my total number of minutes by applying the reduce feature to my task array, and identifying my 'accumulator'(total) and 'currentValue'(task). I also had to add the 'number' thing because form inputs store everything as strings.
+
     let totalMinutes = tasks.reduce((total, task) => total + Number(task.time), 0)
     if (totalMinutes + Number(taskTime) > 480) {
       alert('Adding this task would exceed 480 minutes')                        
       return                                  
-    }                                       
+    }   
+
+// If else function use is same as that in the task limit function.
    
     tasks.push(taskObject)
 
@@ -96,7 +137,22 @@ document.querySelector('#some-form').onsubmit = (event) => {
     renderTasks()
 }
 
-// explain use of AI to fix this bug: https://gemini.google.com/share/62537752a5f8 
+// RENDER TASKS FUNCTION
+
+// Gemini helped me debug several specific problems when building this function
+// Link to convo: https://gemini.google.com/share/62537752a5f8
+
+// One bug was a syntax/order of language issue: taskName and taskTime are declared inside onsubmit using let, which means they are invisible to renderTasks. Initially I did not understand that and was passing on empty variables. That is why I then created taskObject — instead of passing empty variables, I put task data into one object and push the whole thing to the array. renderTasks then reads from that array, not from those variables.
+
+// Another bug was a 'ghost variable' — I had deleted newListItem from onsubmit but renderTasks was still referencing it. There was nothing there anymore so it broke silently.
+
+// I also had a let bug: I wrote 'let taskObject.time = Number(...)' which is not valid. You can only use let when first declaring a variable, not when updating a property on an existing object. The fix was 'taskObject.time = Number(...)' without let.
+
+// Another syntax issue I found inside the forEach: I was building taskItem inside the loop but trying to do innerHTML += outside it. The variable doesn't exist outside the curly braces, so the fix was to move innerHTML += inside the loop so it runs for every task.
+
+// I also learned the difference between = and += for innerHTML. Using = overwrites everything already in the list, so only the last task would show. Using += appends to what is already there, so all tasks stack up correctly.
+
+// The localStorage confusion Gemini helped clear up: tasks (no quotes) is my JavaScript variable. 'tasks' (with quotes) is just the label I use to store it in localStorage — they happen to share the same word but are completely unrelated things.
 
  let renderTasks = () => {                                                     
         let taskList = document.querySelector('#task-list')
@@ -189,5 +245,5 @@ document.querySelector('#some-form').onsubmit = (event) => {
 
 renderTasks()
 
-// continued to follow Eric's tutorial for the above chunk of code - assigning a value to each element so that it can be printed. I think this is necessary for the next step, which will be integrating this into localStorage (I assume we cannot add stuff to localStorage without a key and a value because that is how things are organized in it.)
+// continued to follow Eric's tutorial for the above chunk of code - assigning a value to each element so that it can be printed. 
 // Specifically 49:20 - 51:11
