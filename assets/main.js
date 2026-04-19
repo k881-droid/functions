@@ -54,9 +54,13 @@ let taskItem = document.querySelector('li')
       renderTasks()
     }                                                                           
   })         
+
+// MOBILE BUTTON TOGGLE          
+
+// On mobile, the task adder is hidden by default to save space. Clicking the + button toggles an 'open' class on the form section, which makes it appear. This follows the same class toggle pattern as the strikethrough above.
   
-   let mobileBtn = document.querySelector('#mobile-add-btn')
-  let formSection = document.querySelector('form > section:last-child')
+    let mobileBtn = document.querySelector('#mobile-add-btn')
+    let formSection = document.querySelector('form > section:last-child')
                                                                                 
   mobileBtn.addEventListener('click', () => { 
       formSection.classList.toggle('open')                                      
