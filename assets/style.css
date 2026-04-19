@@ -189,7 +189,7 @@ button:hover {
     background-color: #333;
 }
 
-@media (max-width: 600px) {
+@media (width < 600px) {
     body {
         padding: 1rem;
     }
@@ -207,7 +207,7 @@ button:hover {
     }
 }
 
-@media (max-width: 1024px) and (min-width: 601px) {
+@media (601px <= width <= 1024px) {
     ul {
         grid-template-columns: repeat(4, 1fr);
     }
