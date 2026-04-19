@@ -66,7 +66,30 @@ let taskItem = document.querySelector('li')
       formSection.classList.toggle('open')                                      
   })              
                                                                  
-      
+// MINUTE BUTTON SELECTOR
+
+// Tapping a preset button fills the minutes input with that value and highlights it as active. If the user then types a custom number instead, the active highlight clears so it doesn't look like a button is still selected.   
+                  
+  let minuteBtns = document.querySelectorAll('#minute-buttons button')          
+  let minutesInput = document.querySelector('#time-number')
+
+// In between this I did not know the syntax for making the number on the button appear in the input field if the user clicked it. Gemini helped me with just that final line of this function: https://gemini.google.com/share/90115b91cadf 
+                                                                                
+  minuteBtns.forEach((btn) => {           
+      btn.addEventListener('click', () => {
+          minuteBtns.forEach((b) => b.classList.remove('active'))               
+          btn.classList.add('active')         
+
+// The below line is what I got from Gemini's assistance
+          minutesInput.value = btn.dataset.minutes                              
+      })          
+  })                                                                            
+   
+// Button deselected if user starts typing in the input field 
+
+  minutesInput.addEventListener('input', () => {                                
+      minuteBtns.forEach((b) => b.classList.remove('active'))
+  })       
 
 
 

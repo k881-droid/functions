@@ -192,6 +192,28 @@ button:hover {
     display: none;
 }
 
+#minute-buttons {
+      display: flex;                                                            
+      flex-wrap: wrap;                    
+      gap: 0.5rem;
+  }                                                                             
+   
+  #minute-buttons button {                                                      
+      inline-size: auto;
+      padding: 0.5rem 1rem;
+      background-color: white;
+      color: #1c1c1c;                         
+      border: 1.5px solid #e8e8e8;        
+      border-radius: 2rem;
+      font-size: 0.9rem;                                                        
+  }
+                                                                                
+  #minute-buttons button.active {
+      background-color: #1c1c1c;
+      color: white;                           
+      border-color: #1c1c1c;              
+  }
+
 @media (width < 600px) {
     body {
         padding: 1rem;
