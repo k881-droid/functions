@@ -252,10 +252,26 @@ document.querySelector('#some-form').onsubmit = (event) => {
     <span class="task-time">${taskObject.time} min</span>
     <span class="close">X</span>                                                
   </li>`  
-
-
       taskList.innerHTML += taskItem
     })
+
+
+// PROGRESS BARS FUNCTION - ERIC'S FEEDBACK AS A PRECURSOR FOR ALERTS
+
+// I just reused the functions I created previously for the alerts and applied ternary operators to them for the progress bars. 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator 
+
+  let taskCount = tasks ? tasks.length : 0
+  let totalMins = tasks ? tasks.reduce((total, t) => total +
+  Number(t.time), 0) : 0
+
+  document.getElementById('task-count').textContent = taskCount
+  document.getElementById('minute-count').textContent = totalMins
+  document.getElementById('task-bar').style.width = (taskCount / 12 *
+   100) + '%'
+  document.getElementById('minute-bar').style.width = (totalMins /
+  480 * 100) + '%'
+
 }
 
 renderTasks()
