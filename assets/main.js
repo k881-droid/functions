@@ -22,37 +22,55 @@ let someForm = document.querySelector('#some-form')
 let taskList = document.querySelector('#task-list')
 let taskItem = document.querySelector('li')
 
- taskList.addEventListener('click', (event) => {    
-  
-  // Added an extra condition so the strikethrough only triggers on real task items, not the empty state message. classList.contains('empty') checks if the clicked item has the empty class — if it does, the whole condition is false and nothing happens. Did this myself because it follows basic class techniques.
-
-    if (event.target.tagName === 'LI' &&
-  !event.target.classList.contains('empty')) {
-      event.target.classList.toggle('strikethrough');
-    }
+ taskList.addEventListener('click', (event) => {
 
 // DELETING FROM LOCAL STORAGE
 
 //previously the else if state was referring the span simply to a 'hide' class. After going through the mdn documentation on (filter) that Michael sent me, and then further finding that items can have 'indexes' in those documents, I tried to use that to delete a specific <li>. I used gemini's assistance to understand this further after struggling with the syntax. I was able to understand how to use data index and do the following to actually delete it from localStorage.
 
-// first it reads the index number stored on the <li> — this tells us which task is clicked                                                                    
+// first it reads the index number stored on the <li> — this tells us which task is clicked
 // Get the full task list from localStorage and convert it from text back into an array using the parse thing
 
-// Go through the array and keep every task EXCEPT the one whose position matches the index we just read                                              
+// Go through the array and keep every task EXCEPT the one whose position matches the index we just read
 
-// Save the updated array back to localStorage                              
+// Save the updated array back to localStorage
 
 // Re-render the list so the UI matches what's now in localStorage
 
-// link to conversation with Gemini: https://gemini.google.com/share/f4ae59c98237 
+// link to conversation with Gemini: https://gemini.google.com/share/f4ae59c98237
 
-    else if (event.target.tagName === 'SPAN') {                                 
+    if (event.target.tagName === 'SPAN' && event.target.classList.contains('close')) {
       let index = event.target.parentElement.dataset.index
       let tasks = JSON.parse(localStorage.getItem('tasks'))
       tasks = tasks.filter((task, i) => i !== Number(index))
       localStorage.setItem('tasks', JSON.stringify(tasks))
       renderTasks()
-    }                                                                           
+    }
+  })
+
+// CHECKBOX FUNCTION / INTERACTION
+
+// Followed this tutorial to learn it: https://www.youtube.com/watch?v=G0jO8kUrg-I 
+
+// Also read up on mdn checkbox input: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox
+
+// As well as mdn change event: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event 
+
+// Putting an event listener on the whole list - if anything changes, this runs - then if function will check if a checkbox was changed (task-check is the class we gave checkboxes in css).
+// Index is the number that is stored on the li (parent of the target aka check box)
+// Index number can then see which task on the array was changed 
+// We then get the task from localStorage using the index number, and give it the completed property. 
+// This task with the attached completed property becomes equal to the 'checked' check box 
+// Turning the plain text from localStorage back into a string and putting it back so it saves and re-renders as a completed task
+
+  taskList.addEventListener('change', (event) => {
+    if (event.target.classList.contains('task-check')) {
+      let index = event.target.parentElement.dataset.index
+      let tasks = JSON.parse(localStorage.getItem('tasks'))
+      tasks[Number(index)].completed = event.target.checked
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+      renderTasks()
+    }
   })         
 
 // MOBILE BUTTON TOGGLE          

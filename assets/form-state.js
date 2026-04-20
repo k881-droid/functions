@@ -67,8 +67,9 @@ document.querySelector('#some-form').onsubmit = (event) => {
 // This meant the createElement + append logic was no longer needed here and moved into renderTasks() instead (this is why I did not enitrely delete the above explanations and dead code, it was linked to how I eventually came to the new approach).
 
     let taskObject = {
-        task: taskName, 
-        time: taskTime, 
+        task: taskName,
+        time: taskTime,
+        completed: false
     }
 
     // get tasks from local storage
@@ -141,8 +142,9 @@ document.querySelector('#some-form').onsubmit = (event) => {
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus 
 
-// Upon submission, form scrolls back up to the first task
-    document.querySelector('#task-list').scrollIntoView({ behavior: 'smooth' })
+// Upon submission, scroll to the newest task (the last li in the list)
+    let newestTask = document.querySelector('#task-list li:last-child')
+    if (newestTask) newestTask.scrollIntoView({ behavior: 'smooth', block: 'center' })
 // Upon submission, form focuses on the first input
     document.querySelector('#task-text').focus()   
 // Upon submission, form clears so user can add more tasks
@@ -183,7 +185,7 @@ document.querySelector('#some-form').onsubmit = (event) => {
 // To implement this I found this Stack overflow thread: https://stackoverflow.com/questions/61464941/display-message-if-array-is-empty 
 
         if (!tasks || tasks.length === 0) {                                       
-         taskList.innerHTML = '<li class="empty">No tasks yet — add one below!</li>'
+         taskList.innerHTML = '<li class="empty">No tasks yet - add one below!</li>'
         return                                         }          
 
     tasks.forEach((taskObject) => {
@@ -205,6 +207,8 @@ document.querySelector('#some-form').onsubmit = (event) => {
         
 // I then decided to make it more detailed for more dynamic sizing + better user experience. 
 
+// For colors, I have used css classes.
+
            let className = ''
            taskObject.time = Number(taskObject.time)
 
@@ -222,20 +226,24 @@ document.querySelector('#some-form').onsubmit = (event) => {
            className = 'xxlarge-task'
            }
 
-    let span                                                                    
-           if (taskObject.time < 10) {             
-           span = 1                                                               
-           } else if (taskObject.time < 20) {                                            
-           span = 2                                                                
-           } else if (taskObject.time < 30) {                                            
-           span = 3  
+// SIZE
+
+// Also for dynamic sizing, I tried to assign a number and put a set ratio on width and height accordingly in css. I did this because I was trying to get it to be a bento-y box grid so its always in square sizes. I didn't want it to be varying widths and heights.
+// Each task gets a size 1–5 based on time — same brackets as the colour classes above.
+// CSS nth-child decides width/height.
+
+    let size
+           if (taskObject.time < 10) {
+           size = 1
+           } else if (taskObject.time < 20) {
+           size = 2
+           } else if (taskObject.time < 30) {
+           size = 3
            } else if (taskObject.time < 45) {
-           span = 4                               
-           } else if (taskObject.time < 60) {      
-           span = 5
-           } else {                                                                      
-           span = 6
-           }                
+           size = 4
+           } else {
+           size = 5
+           }
       
 // For the below code, I introduced a new concept which I found through Michael's link on our slack conversation. I asked how I could remove the task using the 'x' permanently, and he pointed me to the array (filter) method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 
 
@@ -246,13 +254,37 @@ document.querySelector('#some-form').onsubmit = (event) => {
 
 // The link to convo is in the main js file where I implemented the js
 
-  let taskItem = `<li class="${className}" 
-  data-index="${tasks.indexOf(taskObject)}" style="grid-column: span ${span}">  
-    <span class="task-name">${taskObject.task}</span>
-    <span class="task-time">${taskObject.time} min</span>
-    <span class="close">X</span>                                                
-  </li>`  
-      taskList.innerHTML += taskItem
+// Creating new li to add the dynamic sizing classes to them (listed above) - for this, I got stuck as to how to integrate the above logic into javascript again. I asked Gemini for help after feeding it my if else logic : https://gemini.google.com/share/2a245e1cfe39 
+
+  let taskItem = document.createElement('li')                        
+                  
+  // Adding className (color) and size number (width and height)
+  taskItem.className = `${className} size-${size}`   
+  // Adding dataset value for the deleting               
+  taskItem.dataset.index = tasks.indexOf(taskObject)
+              
+  
+  //  BUILDING CHECKBOX VISUALLY
+
+  // Adding strikethrough class when a task is completed
+ 
+  if (taskObject.completed) {
+      taskItem.classList.add('strikethrough')                        
+  }                                           
+       
+  // Inner contents of the tasks 
+  // This is where we create our checkbox input in our html, as well as our X button
+  // Ternary operator in the checkbox html is seeing if the task is completed - if it is true, the box comes pre-checked when user reloads the page. 
+
+  taskItem.innerHTML = `
+      <span class="task-name">${taskObject.task}</span>              
+      <span class="task-time">${taskObject.time} min</span>
+      <input type="checkbox" class="task-check"${taskObject.completed ? 'checked' : ''}>   
+      <span class="close">X</span>        
+  `
+// New created task with all of the features above is added to our task list 
+
+  taskList.appendChild(taskItem)
     })
 
 
@@ -262,15 +294,15 @@ document.querySelector('#some-form').onsubmit = (event) => {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator 
 
   let taskCount = tasks ? tasks.length : 0
-  let totalMins = tasks ? tasks.reduce((total, t) => total +
-  Number(t.time), 0) : 0
+  let totalMins = tasks ? tasks.reduce((total, t) => total + Number(t.time), 0) : 0
+  let completedCount = tasks ? tasks.filter(t => t.completed).length : 0
 
   document.getElementById('task-count').textContent = taskCount
   document.getElementById('minute-count').textContent = totalMins
-  document.getElementById('task-bar').style.width = (taskCount / 12 *
-   100) + '%'
-  document.getElementById('minute-bar').style.width = (totalMins /
-  480 * 100) + '%'
+  document.getElementById('completed-count').textContent = completedCount
+  document.getElementById('task-bar').style.width = (taskCount / 12 * 100) + '%'
+  document.getElementById('minute-bar').style.width = (totalMins / 480 * 100) + '%'
+  document.getElementById('completed-bar').style.width = taskCount > 0 ? (completedCount / taskCount * 100) + '%' : '0%'
 
 }
 

@@ -48,38 +48,49 @@ form > section:last-child {
 }
 
 
-.xsmall-task {
-    background-color: #D8F382;
-    font-size: 0.8rem;
-}
+/* Colour classes — JS sets --size, CSS nth-child sets the direction */
 
-.small-task {
-    background-color: #FF99DC;
-    font-size: 0.9rem;
-}
+.xsmall-task { background-color: #D8F382; }
+.small-task   { background-color: #FF99DC; }
+.medium-task  { background-color: #826DEE; color: white; }
+.large-task   { background-color: #EB4213; color: white; }
+.xlarge-task  { background-color: #FFD93D; }
+.xxlarge-task { background-color: #a02e0c; color: white; }
 
-.medium-task {
-    background-color: #826DEE;
-    color: white;
-    font-size: 1.1rem;
-}
+/* nth-child alternating orientation — every 2 tasks switches direction.
+   4n+1, 4n+2 = tasks 1,2,5,6,9,10... → horizontal (wide, 1 row tall)
+   4n+3, 4n+4 = tasks 3,4,7,8,11,12... → vertical (tall, 1 col wide)
+   Each size class then sets how many columns or rows to span. */
 
-.large-task {
-    background-color: #EB4213;
-    color: white;
-    font-size: 1.4rem;
-}
+#task-list li:nth-child(4n+1).size-1,
+#task-list li:nth-child(4n+2).size-1 { grid-column: span 1; grid-row: span 1; }
 
-.xlarge-task {
-    background-color: #FFD93D;
-    font-size: 1.75rem;
-}
+#task-list li:nth-child(4n+1).size-2,
+#task-list li:nth-child(4n+2).size-2 { grid-column: span 2; grid-row: span 1; }
 
-.xxlarge-task {
-    background-color: #a02e0c;
-    color: white;
-    font-size: 2.25rem;
-}
+#task-list li:nth-child(4n+1).size-3,
+#task-list li:nth-child(4n+2).size-3 { grid-column: span 3; grid-row: span 1; }
+
+#task-list li:nth-child(4n+1).size-4,
+#task-list li:nth-child(4n+2).size-4 { grid-column: span 4; grid-row: span 1; }
+
+#task-list li:nth-child(4n+1).size-5,
+#task-list li:nth-child(4n+2).size-5 { grid-column: span 4; grid-row: span 1; }
+
+#task-list li:nth-child(4n+3).size-1,
+#task-list li:nth-child(4n+4).size-1 { grid-column: span 1; grid-row: span 1; }
+
+#task-list li:nth-child(4n+3).size-2,
+#task-list li:nth-child(4n+4).size-2 { grid-column: span 1; grid-row: span 2; }
+
+#task-list li:nth-child(4n+3).size-3,
+#task-list li:nth-child(4n+4).size-3 { grid-column: span 1; grid-row: span 3; }
+
+#task-list li:nth-child(4n+3).size-4,
+#task-list li:nth-child(4n+4).size-4 { grid-column: span 1; grid-row: span 4; }
+
+#task-list li:nth-child(4n+3).size-5,
+#task-list li:nth-child(4n+4).size-5 { grid-column: span 1; grid-row: span 4; }
 
 
 .strikethrough {
@@ -89,7 +100,9 @@ form > section:last-child {
 ul {
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: calc((100vw - 10.5rem) / 8);
+    grid-auto-flow: dense;
     gap: 0.5rem;
 }
 
@@ -104,6 +117,7 @@ li {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    font-size: 2rem;
 }
 
 li.empty {
@@ -118,12 +132,44 @@ li.empty {
 	display: none;
 }
 
+.task-check {
+    appearance: none;
+    -webkit-appearance: none;
+    flex-shrink: 0;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    align-self: flex-end;
+    border: 2px solid currentColor;
+    border-radius: 0.25rem;
+    position: relative;
+    background-color: transparent;
+}
+
+.task-check:checked {
+    background-color: currentColor;
+}
+
+.task-check:checked::after {
+    content: '';
+    position: absolute;
+    left: 0.15rem;
+    top: 0.05rem;
+    width: 0.35rem;
+    height: 0.55rem;
+    border: 2px solid white;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}
+
+
 /* 2. Pull the X out of the text flow and pin it to the right */
 .close {
     position: absolute;
     inset-inline-end: 1rem;
     cursor: pointer;
-    color: red;
+    color: white;
     font-size: 2rem;
 }
 
@@ -252,6 +298,10 @@ button:hover {
         padding: 1rem;
     }
 
+    li{
+        font-size: 0.8rem
+    }
+
     #mobile-add-btn{
         display: block;                                                       
         position: fixed;                                                      
@@ -278,7 +328,22 @@ button:hover {
 
   ul {
         grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: calc((100vw - 6rem) / 3);
    }
+
+  /* Cap horizontal cards at 3 cols max on mobile so nothing overflows */
+  #task-list li:nth-child(4n+1).size-4,
+  #task-list li:nth-child(4n+2).size-4 { grid-column: span 3; grid-row: span 1; }
+
+  #task-list li:nth-child(4n+1).size-5,
+  #task-list li:nth-child(4n+2).size-5 { grid-column: span 3; grid-row: span 1; }
+
+  /* Cap vertical cards at 3 rows max on mobile */
+  #task-list li:nth-child(4n+3).size-4,
+  #task-list li:nth-child(4n+4).size-4 { grid-column: span 1; grid-row: span 3; }
+
+  #task-list li:nth-child(4n+3).size-5,
+  #task-list li:nth-child(4n+4).size-5 { grid-column: span 1; grid-row: span 3; }
 
   form > section:last-child {
         inset-inline: 1rem;
