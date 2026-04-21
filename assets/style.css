@@ -1,7 +1,14 @@
 :root {
     --spacing: 1.8rem;
     --border: 0.2rem solid #121212;    
-    --radius: 0.75rem;     
+    --radius: 1rem;  
+    --black:  #1c1c1c;
+    --red: #FF754F;
+    --orange: #FFB137;
+    --yellow: #FEE660;
+    --green:#8AE5C4;
+    --blue: #7AADEF;
+    --background: #ffe9c0;
 
 }
 
@@ -17,7 +24,7 @@ body {
     /* Add comment for the initial thing if possible */
 
 	padding: var(--spacing);
-    background-color: #ffe9c0;
+    background-color: var(--background);
 }
 
 
@@ -29,11 +36,10 @@ h1 {
     font-weight: 700;
     letter-spacing: -0.05rem;
     line-height: 1;
-    color: #1c1c1c;
+    color: var(--black);
 }
 
 form {
-    border-radius: calc(var(--spacing) / 2);
     display: grid;
     min-block-size: 100vh;
 }
@@ -58,20 +64,28 @@ form > section:last-child {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    border-radius: 1rem;
-    border-width: 0.2rem;
-    border-style: solid;
-    border-color: #1c1c1c;
+    border-radius: var(--radius);
+    border: var(--border);
 }
 
 
 /* Colour classes — JS sets --size, CSS nth-child sets the direction */
 
-.small-task   { background-color: #7AADEF; }
-.medium-task  { background-color: #8AE5C4; }
-.large-task   { background-color: #FEE660; }
-.xlarge-task  { background-color: #FFB137; }
-.xxlarge-task { background-color: #FF754F; color: white; }
+.small-task   { 
+    background-color: var(--blue); 
+}
+.medium-task  { 
+    background-color:  var(--green);  
+}
+.large-task   { 
+    background-color:  var(--yellow); 
+}
+.xlarge-task  { 
+    background-color:  var(--orange); 
+}
+.xxlarge-task { 
+    background-color:  var(--red); 
+}
 
 /* nth-child alternating orientation — every 2 tasks switches direction.
    4n+1, 4n+2 = tasks 1,2,5,6,9,10... → horizontal (wide, 1 row tall)
@@ -141,6 +155,7 @@ li {
     align-items: flex-start;
     min-inline-size: 0;
     overflow: hidden;
+    color: 
 }
 
 li.empty {
@@ -167,7 +182,7 @@ li.empty {
     inline-size: 2.5rem;
     block-size: 2.5rem;                         
     border-radius: 50%;                                            
-    border: 0.2rem solid #121212;
+    border: var(--border);
     display: flex;                                                 
     align-items: center;                
     justify-content: center;                                       
@@ -270,11 +285,11 @@ input {
     background-color: white;
     outline: none;
     font-family: inherit;
-    color: #1c1c1c;
+    color: var(--black);
 }
 
 input:focus {
-    border-color: #1c1c1c;
+    border-color: var(--black);
 }
 
 input::placeholder {
@@ -284,7 +299,7 @@ input::placeholder {
 button {
     inline-size: 100%;
     padding: 0.75rem 1rem;
-    background-color: #1c1c1c;
+    background-color: var(--black);
     color: white;
     border: none;
     border-radius: 0.5rem;
@@ -311,16 +326,16 @@ button:hover {
       inline-size: auto;
       padding: 0.5rem 1rem;
       background-color: white;
-      color: #1c1c1c;                         
+      color: var(--black);                      
       border: 1.5px solid #e8e8e8;        
       border-radius: 2rem;
       font-size: 0.9rem;                                                        
   }
                                                                                 
   #minute-buttons button.active {
-      background-color: #1c1c1c;
+      background-color: var(--black);
       color: white;                           
-      border-color: #1c1c1c;              
+      border-color: var(--black);          
   }
 
 #progress-bars {
@@ -351,13 +366,9 @@ button:hover {
 
   .progress-fill {
       block-size: 100%;
-      background-color: #1c1c1c;
+      background-color: var(--black);
       border-radius: 999px;
       transition: inline-size 0.3s ease;
-  }
-
-  span.close{
-
   }
 
 @media (width < 600px) {
