@@ -212,15 +212,13 @@ document.querySelector('#some-form').onsubmit = (event) => {
            let className = ''
            taskObject.time = Number(taskObject.time)
 
-           if (taskObject.time < 10) {
-           className = 'xsmall-task'
-           } else if (taskObject.time < 20) {
+           if (taskObject.time <= 14) {
            className = 'small-task'
-           } else if (taskObject.time < 30) {
+           } else if (taskObject.time <= 29) {
            className = 'medium-task'
-           } else if (taskObject.time < 45) {
+           } else if (taskObject.time <= 44) {
            className = 'large-task'
-           } else if (taskObject.time < 60) {
+           } else if (taskObject.time <= 59) {
            className = 'xlarge-task'
            } else {
            className = 'xxlarge-task'
@@ -233,13 +231,13 @@ document.querySelector('#some-form').onsubmit = (event) => {
 // CSS nth-child decides width/height.
 
     let size
-           if (taskObject.time < 10) {
+           if (taskObject.time <= 14) {
            size = 1
-           } else if (taskObject.time < 20) {
+           } else if (taskObject.time <= 29) {
            size = 2
-           } else if (taskObject.time < 30) {
+           } else if (taskObject.time <= 44) {
            size = 3
-           } else if (taskObject.time < 45) {
+           } else if (taskObject.time <= 59) {
            size = 4
            } else {
            size = 5

@@ -57,43 +57,47 @@ form > section:last-child {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    border-radius: 1rem;                                                                  
-    border-width: 0.2rem;                                                 
-    border-style: solid;                                               
-    border-color: #1c1c1c;      
+    border-radius: 1rem;
+    border-width: 0.2rem;
+    border-style: solid;
+    border-color: #1c1c1c;
 }
 
 
 /* Colour classes — JS sets --size, CSS nth-child sets the direction */
 
-.xsmall-task { background-color: #D8F382; }
-.small-task   { background-color: #FF99DC; }
-.medium-task  { background-color: #826DEE; color: white; }
-.large-task   { background-color: #EB4213; color: white; }
-.xlarge-task  { background-color: #FFD93D; }
-.xxlarge-task { background-color: #a02e0c; color: white; }
+.small-task   { background-color: #7AADEF; }
+.medium-task  { background-color: #8AE5C4; }
+.large-task   { background-color: #FEE660; }
+.xlarge-task  { background-color: #FFB137; }
+.xxlarge-task { background-color: #FF754F; color: white; }
 
 /* nth-child alternating orientation — every 2 tasks switches direction.
    4n+1, 4n+2 = tasks 1,2,5,6,9,10... → horizontal (wide, 1 row tall)
    4n+3, 4n+4 = tasks 3,4,7,8,11,12... → vertical (tall, 1 col wide)
    Each size class then sets how many columns or rows to span. */
 
-#task-list li:nth-child(4n+1).size-1,
-#task-list li:nth-child(4n+2).size-1 { grid-column: span 1; grid-row: span 1; }
+/* #task-list li:nth-child(4n+1).size-1,
+#task-list li:nth-child(4n+2).size-1 { grid-column: span 1; grid-row: span 1; } */
+#task-list li.size-1 { grid-column: span 1; grid-row: span 1; }
 
-#task-list li:nth-child(4n+1).size-2,
-#task-list li:nth-child(4n+2).size-2 { grid-column: span 2; grid-row: span 1; }
+/* #task-list li:nth-child(4n+1).size-2,
+#task-list li:nth-child(4n+2).size-2 { grid-column: span 2; grid-row: span 1; } */
+#task-list li.size-2 { grid-column: span 2; grid-row: span 1; }
 
-#task-list li:nth-child(4n+1).size-3,
-#task-list li:nth-child(4n+2).size-3 { grid-column: span 3; grid-row: span 1; }
+/* #task-list li:nth-child(4n+1).size-3,
+#task-list li:nth-child(4n+2).size-3 { grid-column: span 3; grid-row: span 1; } */
+#task-list li.size-3 { grid-column: span 3; grid-row: span 1; }
 
-#task-list li:nth-child(4n+1).size-4,
-#task-list li:nth-child(4n+2).size-4 { grid-column: span 4; grid-row: span 1; }
+/* #task-list li:nth-child(4n+1).size-4,
+#task-list li:nth-child(4n+2).size-4 { grid-column: span 4; grid-row: span 1; } */
+#task-list li.size-4 { grid-column: span 4; grid-row: span 1; }
 
-#task-list li:nth-child(4n+1).size-5,
-#task-list li:nth-child(4n+2).size-5 { grid-column: span 4; grid-row: span 1; }
+/* #task-list li:nth-child(4n+1).size-5,
+#task-list li:nth-child(4n+2).size-5 { grid-column: span 4; grid-row: span 1; } */
+#task-list li.size-5 { grid-column: span 4; grid-row: span 1; }
 
-#task-list li:nth-child(4n+3).size-1,
+/* #task-list li:nth-child(4n+3).size-1,
 #task-list li:nth-child(4n+4).size-1 { grid-column: span 1; grid-row: span 1; }
 
 #task-list li:nth-child(4n+3).size-2,
@@ -106,7 +110,7 @@ form > section:last-child {
 #task-list li:nth-child(4n+4).size-4 { grid-column: span 1; grid-row: span 4; }
 
 #task-list li:nth-child(4n+3).size-5,
-#task-list li:nth-child(4n+4).size-5 { grid-column: span 1; grid-row: span 4; }
+#task-list li:nth-child(4n+4).size-5 { grid-column: span 1; grid-row: span 4; } */
 
 
 .strikethrough {
@@ -136,7 +140,9 @@ li {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    min-inline-size: 0;
+    overflow: hidden;
 }
 
 li.empty {
@@ -235,6 +241,11 @@ span.close{
 .task-name {
     display: block;
     font-weight: 600;
+    text-align: left;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    inline-size: 100%;
+    padding-inline-end: 4rem;
 }
 
 .task-time {
@@ -335,16 +346,16 @@ button:hover {
   }
 
   .progress-track {
-      height: 0.5rem;
+      block-size: 0.5rem;
       background-color: #e8e8e8;
       border-radius: 999px;
   }
 
   .progress-fill {
-      height: 100%;
+      block-size: 100%;
       background-color: #1c1c1c;
       border-radius: 999px;
-      transition: width 0.3s ease;
+      transition: inline-size 0.3s ease;
   }
 
   span.close{
@@ -360,29 +371,16 @@ button:hover {
         font-size: 0.8rem
     }
 
-    #mobile-add-btn{
-        display: block;                                                       
-        position: fixed;                                                      
-        inset-block-end: 2rem;                                                
-        inset-inline-end: 2rem;
-        inline-size: 3.5rem;                                                  
-        block-size: 3.5rem;
-        border-radius: 50%;                 
-        font-size: 2rem;                
-        line-height: 1;
-        z-index: 100;                        
-  }                                                                             
-                  
-  form > section:last-child {                                                   
+  form > section:last-child {
       display: none;
-  }                                                                             
-                  
-  form > section:last-child.open {            
-      display: flex;   
-      gap: 0.8rem;                    
+  }
+
+  form > section:last-child.open {
+      display: flex;
+      gap: 0.8rem;
       z-index: 99;
       padding: 0.8rem;
-  } 
+  }
 
   ul {
         grid-template-columns: repeat(3, 1fr);
@@ -427,3 +425,4 @@ button:hover {
         grid-auto-rows: calc((100vw - 9.5rem) / 4);
     }
 }
+
