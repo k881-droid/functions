@@ -134,8 +134,8 @@ form > section:last-child {
 ul {
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: calc((100vw - 9.5rem) / 4);
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: calc((100vw - 10.5rem) / 8);
     grid-auto-flow: dense;
     gap: 0.5rem;
 }
