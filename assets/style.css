@@ -1,7 +1,9 @@
 :root {
     --spacing: 1.8rem;
     --task-spacing: 1.4rem;
-    --border: 0.2rem solid #121212;    
+    --mobile-font: 1rem;
+    --border: 0.2rem solid #121212;  
+    --border-mobile: 0.18rem solid #121212;  
     --radius: 1rem;  
     --black:  #1c1c1c;
     --red: #FF754F;
@@ -373,8 +375,18 @@ button:hover {
     }
 
     body{
-        padding: calc(var(--spacing));
+        padding: calc(var(--radius));
+        font-size: var(--radius);
     }
+
+    li{
+        border: var(--border-mobile);
+    }
+
+    ul#task-list{
+    gap: calc(var(--task-spacing)/2);
+    }
+    
   #mobile-add-btn {
       display: block;
       position: fixed;
@@ -397,6 +409,7 @@ button:hover {
       gap: 0.8rem;
       z-index: 99;
       padding: 0.8rem;
+      border: var(--border-mobile);
   }
 
   ul {
