@@ -8,6 +8,7 @@
     --yellow: #FEE660;
     --green:#8AE5C4;
     --blue: #7AADEF;
+    --grey: #636363;
     --background: #ffe9c0;
 
 }
@@ -196,7 +197,7 @@ li.empty {
    
   /* hover state */
 .custom-check:hover {
-    background-color: var(--black);
+    background-color: var(--grey);
     color: white;
     border-color: white;
 }
