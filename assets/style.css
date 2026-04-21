@@ -368,6 +368,13 @@ button:hover {
 
 @media (width < 768px) {
 
+    h1{
+        font-size: calc(var(--spacing)*2)
+    }
+
+    body{
+        padding: calc(var(--spacing));
+    }
   #mobile-add-btn {
       display: block;
       position: fixed;
