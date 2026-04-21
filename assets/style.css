@@ -151,41 +151,53 @@ li.empty {
 	display: none;
 }
 
+/* CHECK BOX STYLES */    
+
 .task-check {
     appearance: none;
     -webkit-appearance: none;
-
-    /* Found the above properties from mdn to remove default checkbox visual: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance */
-
-    flex-shrink: 0;
-    cursor: pointer;
-    inline-size: 2.5rem;                                                 
-    block-size: 2.5rem;       
-    align-self: flex-end;
-    border: 2px solid currentColor;
-    border-radius: 0.25rem;
-    position: relative;
-    background-color: transparent;
 }
-
-.task-check:checked {
-    background-color: currentColor;
-}
-
-.task-check:checked::after {
-    content: '';
-    position: absolute;
-    left: 0.15rem;
-    top: 0.05rem;
-    width: 0.35rem;
-    height: 0.55rem;
-    border: 2px solid white;
-    border-top: none;
-    border-left: none;
-    transform: rotate(45deg);
-}
-
-
+/* Found the above properties from mdn to remove default checkbox visual: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance */
+                           
+.custom-check {                             
+    inline-size: 2.5rem;
+    block-size: 2.5rem;                         
+    border-radius: 50%;                                            
+    border: 0.2rem solid #121212;
+    display: flex;                                                 
+    align-items: center;                
+    justify-content: center;                                       
+    cursor: pointer;   
+    background-color: white;    
+    position: absolute;                                            
+    inset-inline-end: 1rem;
+    inset-block-start: calc(1rem + 2.5rem + 0.5rem); /* top padding
+   + X height + gap */                        
+  }                                                                               
+                                                                     
+  /* hide the SVG tick by default */          
+.custom-check svg {                     
+    display: none;
+}                                                                  
+   
+  /* hover state */                                                  
+.custom-check:hover {
+    background-color: rgba(0,0,0,0.1);
+}                                           
+  /* clicked/checked state — show the SVG */
+.task-check:checked + .custom-check {     
+    background-color: #121212;                                     
+}                             
+                                                                     
+  .task-check:checked + .custom-check svg {
+    display: block;                      
+}                                                                  
+   
+  /* hide the real checkbox */                                       
+.task-check {                               
+    display: none;                      
+}                 
+       
 /* 2. Pull the X out of the text flow and pin it to the right */
 
 span.close{

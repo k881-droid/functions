@@ -57,7 +57,7 @@ let taskItem = document.querySelector('li')
 // As well as mdn change event: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event 
 
 // Putting an event listener on the whole list - if anything changes, this runs - then if function will check if a checkbox was changed (task-check is the class we gave checkboxes in css).
-// Index is the number that is stored on the li (parent of the target aka check box)
+// Index is the number that is stored on the li — we use closest('li') to find it because the checkbox is now inside a label, so parentElement would only reach the label, not the li
 // Index number can then see which task on the array was changed 
 // We then get the task from localStorage using the index number, and give it the completed property. 
 // This task with the attached completed property becomes equal to the 'checked' check box 
@@ -65,7 +65,7 @@ let taskItem = document.querySelector('li')
 
   taskList.addEventListener('change', (event) => {
     if (event.target.classList.contains('task-check')) {
-      let index = event.target.parentElement.dataset.index
+      let index = event.target.closest('li').dataset.index
       let tasks = JSON.parse(localStorage.getItem('tasks'))
       tasks[Number(index)].completed = event.target.checked
       localStorage.setItem('tasks', JSON.stringify(tasks))
