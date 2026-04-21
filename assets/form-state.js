@@ -280,7 +280,7 @@ document.querySelector('#some-form').onsubmit = (event) => {
       <span class="task-name">${taskObject.task}</span>              
       <span class="task-time">${taskObject.time} min</span>
       <input type="checkbox" class="task-check"${taskObject.completed ? 'checked' : ''}>   
-      <span class="close">X</span>        
+      <span class="close">x</span>        
   `
 // New created task with all of the features above is added to our task list 
 
