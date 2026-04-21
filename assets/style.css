@@ -1,5 +1,6 @@
 :root {
     --spacing: 1.8rem;
+    --task-spacing: 1.4rem;
     --border: 0.2rem solid #121212;    
     --radius: 1rem;  
     --black:  #1c1c1c;
@@ -20,11 +21,7 @@ body {
     font-style: normal;
 	display: grid;
 	gap: calc(var(--spacing)*2);
-	margin: initial;
-
-    /* Add comment for the initial thing if possible */
-
-	padding: var(--spacing);
+	padding: calc(var(--spacing)*2);
     background-color: var(--background);
 }
 
@@ -33,8 +30,9 @@ h1 {
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: normal;
-    font-size: 6rem;
+    font-size: 7rem;
     font-weight: 700;
+    text-align: center;
     letter-spacing: -0.05rem;
     line-height: 1;
     color: var(--black);
@@ -46,7 +44,7 @@ form {
 }
 
 ul#task-list{
-    gap: 1rem;
+    gap: var(--task-spacing);
 }
 
 form > section:first-child {
