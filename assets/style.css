@@ -119,7 +119,7 @@ li {
     border-radius: 0.75rem;
     border-style: solid;
     border-width: 0.2rem;
-    border-color: black;
+    border-color: #121212;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -176,12 +176,15 @@ span.close{
     position: absolute;
     background-color: white;
     padding: 0.5rem;
-    width: 2rem;                                                 
-    height: 2rem;            
+    width: 2.5rem;                                                 
+    height: 2.5rem;            
     border-radius: 50%;
     border-style: solid;
     border-width: 0.2rem;
-    border-color: black;
+    border-color: #121212;
+    display: flex;                                                     
+    align-items: center;                                               
+    justify-content: center;              
 
 }
 .close {
@@ -190,6 +193,10 @@ span.close{
     cursor: pointer;
     color: black;
     font-size: 2rem;
+    display: flex;                                                 
+    align-items: center;                                           
+    justify-content: center;                                       
+    line-height: 0;          
 }
 
 .close:hover {

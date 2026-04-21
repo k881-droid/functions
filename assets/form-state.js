@@ -279,8 +279,13 @@ document.querySelector('#some-form').onsubmit = (event) => {
   taskItem.innerHTML = `
       <span class="task-name">${taskObject.task}</span>              
       <span class="task-time">${taskObject.time} min</span>
-      <input type="checkbox" class="task-check"${taskObject.completed ? 'checked' : ''}>   
-      <span class="close">x</span>        
+      <input type="checkbox" class="task-check" ${taskObject.completed ? 'checked' : ''}>   
+      <span class="close">	 
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.59998 11.6001L11.6 1.6001" stroke="#121212" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M11.6 11.6001L1.59997 1.6001" stroke="#121212" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>   
+      </span>        
   `
 // New created task with all of the features above is added to our task list 
 
