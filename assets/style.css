@@ -155,7 +155,6 @@ li {
     align-items: flex-start;
     min-inline-size: 0;
     overflow: hidden;
-    color: 
 }
 
 li.empty {
@@ -187,31 +186,28 @@ li.empty {
     align-items: center;                
     justify-content: center;                                       
     cursor: pointer;   
-    background-color: white;    
+    background-color: white;
+    color: var(--black);
     position: absolute;                                            
     inset-inline-end: 1rem;
     inset-block-start: calc(1rem + 2.5rem + 0.5rem); /* top padding
    + X height + gap */                        
   }                                                                               
-                                                                     
-  /* hide the SVG tick by default */          
-.custom-check svg {                     
-    display: none;
-}                                                                  
    
-  /* hover state */                                                  
+  /* hover state */
 .custom-check:hover {
-    background-color: rgba(0,0,0,0.1);
+    background-color: var(--black);
+    color: white;
+    border-color: white;
+}
+
+  /* clicked/checked state */
+.task-check:checked + .custom-check {
+    background-color: var(--black);
+    color: white;
+    border-color: white;
 }                                           
-  /* clicked/checked state — show the SVG */
-.task-check:checked + .custom-check {     
-    background-color: #121212;                                     
-}                             
-                                                                     
-  .task-check:checked + .custom-check svg {
-    display: block;                      
-}                                                                  
-   
+
   /* hide the real checkbox */                                       
 .task-check {                               
     display: none;                      
@@ -247,8 +243,9 @@ span.close{
 }
 
 .close:hover {
-    background-color: #f44336;
+    background-color: var(--black);
     color: white;
+    border-color: white;
 }
 
 .task-name {
@@ -289,7 +286,7 @@ input {
 }
 
 input:focus {
-    border-color: var(--black);
+    border:  var(--border); 
 }
 
 input::placeholder {

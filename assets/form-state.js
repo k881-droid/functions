@@ -280,14 +280,18 @@ document.querySelector('#some-form').onsubmit = (event) => {
       <label class="task-check-label">                                   
       <input type="checkbox" class="task-check"${taskObject.completed ? 'checked' : ''}>                          
       <span class="custom-check">         
-          <!-- your SVG here, only shows when checked -->            
+          <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.59998 11.6001L16.6 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M6.59998 11.6001L1.59998 6.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+       
       </span>                                                        
   </label>
 
       <span class="close">	 
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1.59998 11.6001L11.6 1.6001" stroke="#121212" stroke-width="3.2" stroke-linecap="round"/>
-        <path d="M11.6 11.6001L1.59997 1.6001" stroke="#121212" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M1.59998 11.6001L11.6 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M11.6 11.6001L1.59997 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
         </svg>   
       </span>        
   `
