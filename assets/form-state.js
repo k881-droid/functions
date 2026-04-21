@@ -297,16 +297,40 @@ document.querySelector('#some-form').onsubmit = (event) => {
   let totalMins = tasks ? tasks.reduce((total, t) => total + Number(t.time), 0) : 0
   let completedCount = tasks ? tasks.filter(t => t.completed).length : 0
 
+// getElementById finds an HTML element by its id attribute and lets us update it with JS    
+
+// I used this in my previous assignment as well when making my SVGs for the strings: https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+
+// textContent sets the text displayed inside that element   
+
+// MDN textContent: https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent  
+
+// I used it to display the numbers we get from the variables above 
+// Initially I tried to find out how to do this via Google searches, but I couldn't connect the dots i.e. what to say to get element id to make the progress in the bars visible. So I asked Gemini for help:
+// https://gemini.google.com/share/42b0f29c76e2 
+// I know we aren't supposed to use inline JS styles but this seemed to be the only way I could figure out the progress bar displays.
+
   document.getElementById('task-count').textContent = taskCount
   document.getElementById('minute-count').textContent = totalMins
   document.getElementById('completed-count').textContent = completedCount
-  document.getElementById('task-bar').style.width = (taskCount / 12 * 100) + '%'
-  document.getElementById('minute-bar').style.width = (totalMins / 480 * 100) + '%'
-  document.getElementById('completed-bar').style.width = taskCount > 0 ? (completedCount / taskCount * 100) + '%' : '0%'
 
+// TASK BAR PROGRESS 
+
+// Dividing total tasks by 12 as that is the total number of tasks, then converting it to a percentage to get the amount of progress to display.
+
+  document.getElementById('task-bar').style.width = (taskCount / 12 * 100) + '%'
+
+// MINUTE BAR 
+
+// Dividing total mins by 480 as that is the total number of minutes we are allowing, then converting it to a percentage to get the amount of progress to display.
+
+  document.getElementById('minute-bar').style.width = (totalMins / 480 * 100) + '%'
+
+// COMPLETED TASKS BAR 
+
+// Same logic, we are just checking if the tasks are more than 0 at first to trigger 'completion' (if no tasks are present it will divide by 0 and that would cause the site to break)
+  document.getElementById('completed-bar').style.width = taskCount > 0 ? (completedCount / taskCount * 100) + '%' : '0%'
 }
 
 renderTasks()
 
-// continued to follow Eric's tutorial for the above chunk of code - assigning a value to each element so that it can be printed. 
-// Specifically 49:20 - 51:11
