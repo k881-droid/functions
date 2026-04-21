@@ -12,6 +12,9 @@ body {
 	display: grid;
 	gap: calc(var(--spacing)*2);
 	margin: initial;
+
+    /* Add comment for the initial thing if possible */
+
 	padding: var(--spacing);
     background-color: #ffe9c0;
 }
@@ -151,10 +154,13 @@ li.empty {
 .task-check {
     appearance: none;
     -webkit-appearance: none;
+
+    /* Found the above properties from mdn to remove default checkbox visual: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance */
+
     flex-shrink: 0;
     cursor: pointer;
-    width: 1rem;
-    height: 1rem;
+    inline-size: 2.5rem;                                                 
+    block-size: 2.5rem;       
     align-self: flex-end;
     border: 2px solid currentColor;
     border-radius: 0.25rem;
@@ -186,8 +192,8 @@ span.close{
     position: absolute;
     background-color: white;
     padding: 0.5rem;
-    width: 2.5rem;                                                 
-    height: 2.5rem;            
+    inline-size: 2.5rem;                                                 
+    block-size: 2.5rem;            
     border-radius: 50%;
     border-style: solid;
     border-width: 0.2rem;
