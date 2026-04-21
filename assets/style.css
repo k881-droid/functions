@@ -1,14 +1,16 @@
 :root {
-    --spacing: 2em;
+    --spacing: 2rem;
+    --base-font: 1rem;
+
 }
 
 /* Some basics to make it easier to read. */
 body {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-optical-sizing: auto;
+    font-size: var(--base-font);
     font-style: normal;
 	display: grid;
-	gap: var(--spacing);
+	gap: calc(var(--spacing)*2);
 	margin: initial;
 	padding: var(--spacing);
     background-color: #ffe9c0;
@@ -19,9 +21,9 @@ h1 {
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: normal;
-    font-size: 4rem;
+    font-size: 6rem;
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.05rem;
     line-height: 1;
     color: #1c1c1c;
 }
