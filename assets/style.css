@@ -6,6 +6,7 @@ body {
 	gap: var(--spacing);
 	margin: initial;
 	padding: var(--spacing);
+    background-color: #ffe9c0;
 }
 
 
@@ -18,12 +19,13 @@ h1 {
 }
 
 form {
-    background-color: whitesmoke;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0.2rem;
     border-radius: calc(var(--spacing) / 2);
     display: grid;
     gap: var(--spacing);
-    padding: var(--spacing);
-    padding-block-end: 14rem;
+    padding: 0;
     min-block-size: 100vh;
 }
 
@@ -43,8 +45,10 @@ form > section:last-child {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;                                                                  
+    border-width: 0.2rem;                                                 
+    border-style: solid;                                               
+    border-color: #1c1c1c;      
 }
 
 
