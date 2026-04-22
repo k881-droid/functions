@@ -37,7 +37,16 @@
 
 		 <form id="some-form">
 
-			  <button type="button" id="mobile-add-btn">+</button>      
+			  <button type="button" id="mobile-add-btn">
+                  <svg class="svg-desktop" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1.59998 11.6001L11.6 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                      <path d="M11.6 11.6001L1.59997 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                  </svg>
+                  <svg class="svg-mobile" width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.82938 0.810996C6.27735 0.36303 7.00325 0.36303 7.45122 0.810996C7.89918 1.25896 7.89918 1.98486 7.45122 2.43283L2.43275 7.4513C1.98478 7.89926 1.25888 7.89926 0.810916 7.4513C0.36295 7.00333 0.36295 6.27743 0.810916 5.82947L5.82938 0.810996Z" fill="currentColor"/>
+                      <path d="M2.43282 0.810996C1.98486 0.36303 1.25896 0.36303 0.810991 0.810996C0.363025 1.25896 0.363025 1.98486 0.810991 2.43283L5.82946 7.4513C6.27743 7.89926 7.00333 7.89926 7.45129 7.4513C7.89926 7.00333 7.89926 6.27743 7.45129 5.82947L2.43282 0.810996Z" fill="currentColor"/>
+                  </svg>
+              </button>
 			  
       <section>                                                                 
           <ul id="task-list"></ul>     
@@ -59,6 +68,12 @@
           <button id="add">Add Task</button>
       </section>                                                                
          </form>     
+
+    <dialog id="dialog">
+        <p>are you sure about that</p>
+        <button id="dialog-confirm">delete</button>
+        <button id="dialog-cancel">cancel</button>
+    </dialog>
 
 	</body>
 </html>

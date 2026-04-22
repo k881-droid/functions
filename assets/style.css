@@ -56,6 +56,7 @@ form > section:first-child {
 }
 
 form > section:last-child {
+    display: none;
     position: fixed;
     inset-block-end: 3rem;
     inset-inline-start: 50%;
@@ -63,11 +64,14 @@ form > section:last-child {
     inline-size: 26rem;
     background-color: var(--second-bg);
     padding: 1.5rem;
-    display: flex;
     flex-direction: column;
     gap: 1.25rem;
     border-radius: var(--radius);
     border: var(--border);
+}
+
+form > section:last-child.open {
+    display: flex;
 }
 
 
@@ -310,8 +314,26 @@ button:hover {
     color: var(--black);
 }
 
-#mobile-add-btn{
-    display: none;
+#mobile-add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset-block-end: 2rem;
+    inset-inline-end: 2rem;
+    inline-size: 3.5rem;
+    block-size: 3.5rem;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+#mobile-add-btn svg {
+    transform: rotate(45deg);
+}
+
+#mobile-add-btn svg path {
+    stroke: white;
+    fill: white;
 }
 
 #minute-buttons {
@@ -440,16 +462,8 @@ button:hover {
   }     
   
   #mobile-add-btn {
-      display: block;
-      position: fixed;
-      inset-block-end: 2rem;
-      inset-inline-end: 2rem;
-      inline-size: 3.5rem;
-      block-size: 3.5rem;
-      border-radius: 50%;
-      font-size: 2rem;
-      line-height: 1;
-      z-index: 100;
+      inline-size: 3rem;
+      block-size: 3rem;
   }
 
   form > section:last-child {

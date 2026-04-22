@@ -22,7 +22,12 @@ let someForm = document.querySelector('#some-form')
 let taskList = document.querySelector('#task-list')
 let taskItem = document.querySelector('li')
 
- taskList.addEventListener('click', (event) => {
+let modalDialog = document.querySelector('#dialog')
+let confirmBtn = modalDialog.querySelector('#dialog-confirm')
+let cancelBtn = modalDialog.querySelector('#dialog-cancel')
+let pendingIndex = null
+
+taskList.addEventListener('click', (event) => {
 
 // DELETING FROM LOCAL STORAGE
 
@@ -41,13 +46,28 @@ let taskItem = document.querySelector('li')
 
     let closeBtn = event.target.closest('.close')
     if (closeBtn) {
-      let index = closeBtn.closest('li').dataset.index
-      let tasks = JSON.parse(localStorage.getItem('tasks'))
-      tasks = tasks.filter((task, i) => i !== Number(index))
-      localStorage.setItem('tasks', JSON.stringify(tasks))
-      renderTasks()
+      pendingIndex = closeBtn.closest('li').dataset.index
+      modalDialog.showModal()
     }
   })
+
+confirmBtn.addEventListener('click', () => {
+    let tasks = JSON.parse(localStorage.getItem('tasks'))
+    tasks = tasks.filter((task, i) => i !== Number(pendingIndex))
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+    renderTasks()
+    modalDialog.close()
+})
+
+cancelBtn.addEventListener('click', () => {
+    modalDialog.close()
+})
+
+document.addEventListener('click', (event) => {
+    if (event.target == document.documentElement) {
+        modalDialog.close()
+    }
+})
 
 // CHECKBOX FUNCTION / INTERACTION
 
