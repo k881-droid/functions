@@ -22,6 +22,30 @@ let someForm = document.querySelector('#some-form')
 let taskList = document.querySelector('#task-list')
 let taskItem = document.querySelector('li')
 
+// INTRO DIALOG
+
+let introDialog = document.querySelector('#intro-dialog')
+let infoBtn = document.querySelector('#info-btn')
+
+// Open automatically when the page first loads
+introDialog.showModal()
+
+// ? button toggles it open and closed
+infoBtn.addEventListener('click', () => {
+    if (introDialog.open) {
+        introDialog.close()
+    } else {
+        introDialog.showModal()
+    }
+})
+
+// Close when clicking the backdrop
+introDialog.addEventListener('click', (event) => {
+    if (event.target === introDialog) {
+        introDialog.close()
+    }
+})
+
 let modalDialog = document.querySelector('#dialog')
 let confirmBtn = modalDialog.querySelector('#dialog-confirm')
 let cancelBtn = modalDialog.querySelector('#dialog-cancel')

@@ -185,7 +185,7 @@ document.querySelector('#some-form').onsubmit = (event) => {
 // To implement this I found this Stack overflow thread: https://stackoverflow.com/questions/61464941/display-message-if-array-is-empty 
 
         if (!tasks || tasks.length === 0) {                                       
-         taskList.innerHTML = '<li class="empty">No tasks yet - add one below!</li>'
+         taskList.innerHTML = '<li class="empty">Your life is about to change. One task at a time.</li>'
         return                                         }          
 
     tasks.forEach((taskObject) => {
