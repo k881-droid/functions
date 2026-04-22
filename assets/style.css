@@ -12,6 +12,7 @@
     --green:#8AE5C4;
     --blue: #7AADEF;
     --grey: #bdbdbd;
+    --second-bg: whitesmoke;
     --background: #ffe9c0;
 
 }
@@ -60,7 +61,7 @@ form > section:last-child {
     inset-inline-start: 50%;
     transform: translateX(-50%);
     inline-size: 420px;
-    background-color: whitesmoke;
+    background-color: var(--second-bg);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -274,7 +275,6 @@ label {
 input {
     inline-size: 100%;
     padding: 0.8rem 1rem;
-    border: var(--border);
     border-radius: 0.6rem;
     font-size: 1rem;
     background-color: white;
@@ -288,7 +288,7 @@ input:focus {
 }
 
 input::placeholder {
-    color: #ccc;
+    color: var(--grey);
 }
 
 button {
@@ -316,14 +316,14 @@ button:hover {
       flex-wrap: wrap;                    
       gap: 0.5rem;
   }                                                                             
-   
-  #minute-buttons button {                                                      
+ #minute-buttons button {        
+                                                  
       inline-size: auto;
       padding: 0.5rem 1rem;
       background-color: white;
       color: var(--black);                      
-      border: var(--border);
-      border-radius: 2rem;
+      /* border: var(--border);
+      border-radius: 2rem; */
       font-size: 0.9rem;                                                        
   }
                                                                                 
@@ -343,7 +343,7 @@ button:hover {
       display: flex;
       flex-direction: column;
       gap: var(--task-spacing);
-      background-color: white;
+      background-color: var(--second-bg);
       padding: 1rem;
       border-radius: var(--radius);
       border: var(--border);
@@ -385,13 +385,12 @@ button:hover {
     body{
         padding: var(--radius);
         font-size: var(--radius);
-        padding-block-start: calc(var(--spacing)*2);;
+        padding-block-start: calc(var(--spacing)*2);
     }
 
     li{
         border: var(--border-mobile);
     }
-
 
     .progress-label{
         font-size: var(--mobile-font);
@@ -432,8 +431,7 @@ button:hover {
       color: white;
       border-color: white;                                           
   }     
-
-
+  
   #mobile-add-btn {
       display: block;
       position: fixed;
@@ -479,15 +477,26 @@ button:hover {
         inline-size: auto;
     }
 
+    #minute-buttons button {     
+        border: var(--border-mobile);
+    } 
     input{
         padding: 0.5rem;
+        border: 0;
+    }
+
+    input:focus{
+         border: var(--border-mobile);
     }
 
     #progress-bars {
         flex-direction: column;
         gap: 0.75rem;
     }
+    
+    
 }
+
 
 
 @media (360px <= width < 764px) {
