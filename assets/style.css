@@ -20,6 +20,7 @@
     --background: #ffe9c0;
     --backdrop: rgba(0, 0, 0, 0.4);
     --tracking: 0.1em;
+    --gap-sm: 0.5rem;
 
 }
 
@@ -46,6 +47,84 @@ h1 {
     line-height: 1;
     color: var(--black);
     text-wrap: balance;
+}
+
+/* CLOCK */
+
+/* I found this clock design on CodePen by Nathan Taylor and adapted it to replace the 'o' in 'go' in the h1: https://codepen.io/nathantaylor/pen/xgROyP
+   The original was a standalone SCSS clock — I converted all its rem values to em so the whole thing scales off one font-size on the parent element.
+   I stripped out the second hand and only kept hour and minute, with just the minute one actually animating.
+
+   What the code is doing: the hands are just thin rounded rectangles positioned so their transform-origin sits at the clock center rather than at the element's own center. this means when you rotate them they swing around the clock face like a real hand would. the @keyframes animation just keeps rotating the element from 0 to 360 degrees on a loop — the speed of the animation controls how fast the hand moves. */
+
+.clock-o {
+    display: inline-block;
+    position: relative;
+    /* not a magic number — it is a calculated scale factor. the original clock is 40 units wide and I wanted it to match the + button (3.5rem), so 3.5 ÷ 40 = 0.0875rem per unit. all internal em values then stay proportional automatically. */
+    font-size: 0.0875rem;
+    inline-size: 40em;
+    block-size: 40em;
+    border-radius: 50%;
+    background-color: white;
+    border: var(--border);
+    vertical-align: middle;
+}
+
+.clock-o .clock-face {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    inline-size: 35em;
+    block-size: 35em;
+    border-radius: 50em;
+    transform: translateX(-50%) translateY(-50%);
+    background: white;
+    box-shadow: 0 0 0.4em rgba(28, 28, 28, 0.2),
+                inset 0.25em 0.5em 1em rgba(28, 28, 28, 0.1);
+}
+
+.clock-o .hand {
+    position: absolute;
+    inset-inline-start: calc(50% - 1em);
+    inline-size: 2em;
+    border-radius: 50em;
+    background: var(--black);
+}
+
+@keyframes big-tick {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.clock-o .hour {
+    block-size: 11em;
+    transform-origin: 50% 10em;
+    inset-block-start: calc(50% - 10em);
+    /* static — fixed at roughly 10 o'clock */
+    transform: rotate(300deg);
+}
+
+.clock-o .minute {
+    block-size: 14em;
+    transform-origin: 50% 13em;
+    inset-block-start: calc(50% - 13em);
+    /* 10s so you can actually see it moving — a real minute hand would be 3600s which is basically invisible */
+    animation: big-tick 10s infinite linear;
+}
+
+.clock-o .clock-cover {
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-start: 50%;
+    transform: translate(-50%, -50%);
+    inline-size: 3.5em;
+    block-size: 3.5em;
+    border-radius: 50em;
+    background: var(--black);
+}
+
+.o-fallback {
+    display: none;
 }
 
 form {
@@ -137,7 +216,7 @@ ul {
     /* not made up — copied from computed styles in dev tools to keep each card a perfect square across 8 columns. found this approach while googling how to equally divide the viewport into squares — used the grid values from the computed panel to work out the right numbers: https://css-tricks.com/computed-values-more-than-meets-the-eye/ */
     grid-auto-rows: calc((100vw - 10.5rem) / 8);
     grid-auto-flow: dense;
-    gap: 0.5rem;
+    gap: var(--gap-sm);
 }
 
 /* TASK GRID */
@@ -222,7 +301,7 @@ li.empty {
 span.close{
     position: absolute;
     background-color: white;
-    padding: 0.5rem;
+    padding: var(--gap-sm);
     inline-size: 2.5rem;                                                 
     block-size: 2.5rem;            
     border-radius: 50%;
@@ -278,7 +357,8 @@ label {
 
 input {
     inline-size: 100%;
-    padding: 0.8rem 1rem;
+    padding-block: 0.8rem;
+    padding-inline: 1rem;
     border-radius: 0.6rem;
     font-size: var(--mobile-font);
     background-color: white;
@@ -299,7 +379,8 @@ input::placeholder {
 
 button {
     inline-size: 100%;
-    padding: 0.75rem 1rem;
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
     background-color: var(--black);
     color: white;
     border-radius: var(--radius);
@@ -390,11 +471,12 @@ button:hover {
 #minute-buttons {
       display: flex;                                                            
       flex-wrap: wrap;                    
-      gap: 0.5rem;
+      gap: var(--gap-sm);
   }                                                                             
  #minute-buttons button {
       inline-size: auto;
-      padding: 0.5rem 1rem;
+      padding-block: var(--gap-sm);
+      padding-inline: 1rem;
       background-color: var(--black);
       color: white;
       border: none;
@@ -407,11 +489,21 @@ button:hover {
   }
 
   /* Active state: each button gets its category colour */
-  #minute-buttons button:nth-child(1).active { background-color: var(--blue);   color: var(--black); }
-  #minute-buttons button:nth-child(2).active { background-color: var(--green);  color: var(--black); }
-  #minute-buttons button:nth-child(3).active { background-color: var(--yellow); color: var(--black); }
-  #minute-buttons button:nth-child(4).active { background-color: var(--orange); color: var(--black); }
-  #minute-buttons button:nth-child(5).active { background-color: var(--red);    color: var(--black); }
+  #minute-buttons button:nth-child(1).active { 
+    background-color: var(--blue);   color: var(--black); 
+  }
+  #minute-buttons button:nth-child(2).active { 
+    background-color: var(--green);  color: var(--black); 
+  }
+  #minute-buttons button:nth-child(3).active { 
+    background-color: var(--yellow); color: var(--black); 
+  }
+  #minute-buttons button:nth-child(4).active { 
+    background-color: var(--orange); color: var(--black); 
+  }
+  #minute-buttons button:nth-child(5).active { 
+    background-color: var(--red);    color: var(--black);
+  }
 
 /* PROGRESS BARS */
 
@@ -460,7 +552,7 @@ dialog {
     background-color: var(--black);
     color: white;
     border-radius: var(--radius);
-    padding: 2rem;
+    padding: calc(var(--radius) * 2);
     flex-direction: column;
     gap: var(--task-spacing);
     font-size: var(--spacing);
@@ -543,7 +635,8 @@ dialog > div {
 
 #hooray-gif {
     position: absolute;
-    inset: 0;
+    inset-block: 0;
+    inset-inline: 0;
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover;
@@ -617,7 +710,15 @@ dialog > div {
 @media (width < 764px) {
 
     h1{
-        font-size: calc(var(--spacing)*1.8)
+        font-size: calc(var(--spacing)*1.8);
+    }
+
+    .clock-o {
+        display: none;
+    }
+
+    .o-fallback {
+        display: inline;
     }
 
     body{
@@ -715,7 +816,7 @@ dialog > div {
         border: none;
     }
     input{
-        padding: 0.5rem;
+        padding: var(--gap-sm);
         border: 0;
     }
 
