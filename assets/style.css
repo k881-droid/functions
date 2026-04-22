@@ -323,17 +323,31 @@ button:hover {
     inset-inline-end: 2rem;
     inline-size: 3.5rem;
     block-size: 3.5rem;
+    padding: 0;
     border-radius: 50%;
+    border: var(--border);
+    background-color: white;
+    color: var(--black);
     z-index: 100;
+}
+
+#mobile-add-btn:hover {
+    background-color: var(--grey);
+}
+
+#mobile-add-btn:active {
+    background-color: var(--black);
+    color: white;
+    border-color: white;
 }
 
 #mobile-add-btn svg {
     transform: rotate(45deg);
+    transition: transform 0.3s ease;
 }
 
-#mobile-add-btn svg path {
-    stroke: white;
-    fill: white;
+#mobile-add-btn.open svg {
+    transform: rotate(0deg);
 }
 
 #minute-buttons {
@@ -464,6 +478,7 @@ button:hover {
   #mobile-add-btn {
       inline-size: 3rem;
       block-size: 3rem;
+      border: var(--border-mobile);
   }
 
   form > section:last-child {

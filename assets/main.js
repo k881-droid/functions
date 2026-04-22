@@ -101,8 +101,9 @@ document.addEventListener('click', (event) => {
     let mobileBtn = document.querySelector('#mobile-add-btn')
     let formSection = document.querySelector('form > section:last-child')
                                                                                 
-  mobileBtn.addEventListener('click', () => { 
-      formSection.classList.toggle('open')                                      
+  mobileBtn.addEventListener('click', () => {
+      formSection.classList.toggle('open')
+      mobileBtn.classList.toggle('open')
   })              
                                                                  
 // MINUTE BUTTON SELECTOR
