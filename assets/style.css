@@ -11,7 +11,7 @@
     --yellow: #FEE660;
     --green:#8AE5C4;
     --blue: #7AADEF;
-    --grey: #636363;
+    --grey: #bdbdbd;
     --background: #ffe9c0;
 
 }
@@ -55,7 +55,7 @@ form > section:first-child {
     min-block-size: 0;
 }
 
-/* form > section:last-child {
+form > section:last-child {
     position: fixed;
     inset-block-end: 3rem;
     inset-inline-start: 50%;
@@ -68,7 +68,7 @@ form > section:first-child {
     gap: 1.25rem;
     border-radius: var(--radius);
     border: var(--border);
-} */
+}
 
 
 /* Colour classes — JS sets --size, CSS nth-child sets the direction */
@@ -336,38 +336,46 @@ button:hover {
 
 #progress-bars {
       display: flex;
-      gap: 1.5rem;
+      gap: 4rem;
   }
 
   .progress-item {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: var(--task-spacing);
+      background-color: white;
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: var(--border);
   }
 
   .progress-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
+      font-size: var(--spacing);
       letter-spacing: 0.1em;
-      color: #aaa;
+      display: flex;                          
+      justify-content: space-between;     
   }
 
   .progress-track {
-      block-size: 0.5rem;
-      background-color: #e8e8e8;
-      border-radius: 999px;
+      block-size: 1rem;
+      background-color: var(--grey);
+      border-radius: var(--radius);
+
   }
 
   .progress-fill {
       block-size: 100%;
       background-color: var(--black);
-      border-radius: 999px;
+      border-radius: var(--radius);
       transition: inline-size 0.3s ease;
   }
 
   .svg-mobile { display: none; }          
+
+  #task-list li.size-1 .task-name {
+      padding-inline-end: 2rem;                                      
+  }    
 
 @media (width < 764px) {
 
@@ -509,7 +517,7 @@ button:hover {
     }
 }
 
-@media (1024px < width){
+@media (1024px < width < 1366){
     ul{
         grid-template-columns: repeat(8, 10.2rem);
         grid-auto-rows: 10.2rem;
