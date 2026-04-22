@@ -33,7 +33,6 @@ h1 {
     font-weight: 700;
     font-style: normal;
     font-size: calc(var(--spacing)*3.4);
-    font-weight: 700;
     text-align: center;
     letter-spacing: -0.05rem;
     line-height: 1;
@@ -55,7 +54,7 @@ form > section:first-child {
     min-block-size: 0;
 }
 
-/* form > section:last-child {
+form > section:last-child {
     position: fixed;
     inset-block-end: 3rem;
     inset-inline-start: 50%;
@@ -68,7 +67,7 @@ form > section:first-child {
     gap: 1.25rem;
     border-radius: var(--radius);
     border: var(--border);
-} */
+}
 
 
 /* Colour classes — JS sets --size, CSS nth-child sets the direction */
@@ -162,7 +161,7 @@ li {
 li.empty {
     grid-column: 1 / -1;
     background-color: transparent;
-    color: #999;
+    color: var(--grey);
 }
 
 
@@ -268,14 +267,14 @@ label {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #aaa;
+    color: var(--grey);
     display: block;
 }
 
 input {
     inline-size: 100%;
     padding: 0.8rem 1rem;
-    border: 1.5px solid #e8e8e8;
+    border: var(--border);
     border-radius: 0.6rem;
     font-size: 1rem;
     background-color: white;
