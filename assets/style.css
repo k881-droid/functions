@@ -232,7 +232,7 @@ span.close{
     position: absolute;
     inset-inline-end: 1rem;
     cursor: pointer;
-    color: black;
+    color: var(--black);
     font-size: 2rem;
     display: flex;                                                 
     align-items: center;                                           
@@ -297,14 +297,14 @@ button {
     background-color: var(--black);
     color: white;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: var(--radius);
     font-size: 1rem;
     cursor: pointer;
     font-family: inherit;
 }
 
 button:hover {
-    background-color: #333;
+    background-color: var(--grey);
 }
 
 #mobile-add-btn{
@@ -322,7 +322,7 @@ button:hover {
       padding: 0.5rem 1rem;
       background-color: white;
       color: var(--black);                      
-      border: 1.5px solid #e8e8e8;        
+      border: var(--border);
       border-radius: 2rem;
       font-size: 0.9rem;                                                        
   }
