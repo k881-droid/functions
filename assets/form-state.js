@@ -350,6 +350,11 @@ document.querySelector('#some-form').onsubmit = (event) => {
 
 // Same logic, we are just checking if the tasks are more than 0 at first to trigger 'completion' (if no tasks are present it will divide by 0 and that would cause the site to break)
   document.getElementById('completed-bar').style.width = taskCount > 0 ? (completedCount / taskCount * 100) + '%' : '0%'
+
+// Show the hooray modal when every task in the list is checked off
+  if (taskCount > 0 && completedCount === taskCount) {
+    document.querySelector('#hooray-dialog').showModal()
+  }
 }
 
 renderTasks()

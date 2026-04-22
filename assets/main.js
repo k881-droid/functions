@@ -22,6 +22,21 @@ let someForm = document.querySelector('#some-form')
 let taskList = document.querySelector('#task-list')
 let taskItem = document.querySelector('li')
 
+// HOORAY DIALOG
+
+let hoorayDialog = document.querySelector('#hooray-dialog')
+
+document.querySelector('#hooray-close').addEventListener('click', () => {
+    hoorayDialog.close()
+})
+
+// Close on backdrop click
+hoorayDialog.addEventListener('click', (event) => {
+    if (event.target === hoorayDialog) {
+        hoorayDialog.close()
+    }
+})
+
 // INTRO DIALOG
 
 let introDialog = document.querySelector('#intro-dialog')
@@ -29,6 +44,10 @@ let infoBtn = document.querySelector('#info-btn')
 
 // Open automatically when the page first loads
 introDialog.showModal()
+
+document.querySelector('#intro-close').addEventListener('click', () => {
+    introDialog.close()
+})
 
 // ? button toggles it open and closed
 infoBtn.addEventListener('click', () => {
