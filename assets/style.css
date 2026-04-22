@@ -20,7 +20,8 @@
 
 }
 
-/* Some basics to make it easier to read. */
+/* BASE STYLES */
+
 body {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: var(--spacing);
@@ -58,6 +59,8 @@ form > section:first-child {
     min-block-size: 0;
 }
 
+/* TASK FORM PANEL */
+
 form > section:last-child {
     display: none;
     position: fixed;
@@ -78,7 +81,9 @@ form > section:last-child.open {
 }
 
 
-/* Colour classes — JS sets --size, CSS nth-child sets the direction */
+/* TASK CARD COLOURS */
+
+/* Colour classes — JS sets --size */
 
 .small-task   { 
     background-color: var(--blue); 
@@ -96,45 +101,26 @@ form > section:last-child.open {
     background-color:  var(--red); 
 }
 
-/* nth-child alternating orientation — every 2 tasks switches direction.
-   4n+1, 4n+2 = tasks 1,2,5,6,9,10... → horizontal (wide, 1 row tall)
-   4n+3, 4n+4 = tasks 3,4,7,8,11,12... → vertical (tall, 1 col wide)
-   Each size class then sets how many columns or rows to span. */
 
-/* #task-list li:nth-child(4n+1).size-1,
-#task-list li:nth-child(4n+2).size-1 { grid-column: span 1; grid-row: span 1; } */
-#task-list li.size-1 { grid-column: span 1; grid-row: span 1; }
+#task-list li.size-1 { 
+    grid-column: span 1; grid-row: span 1; 
+}
 
-/* #task-list li:nth-child(4n+1).size-2,
-#task-list li:nth-child(4n+2).size-2 { grid-column: span 2; grid-row: span 1; } */
-#task-list li.size-2 { grid-column: span 2; grid-row: span 1; }
+#task-list li.size-2 { 
+    grid-column: span 2; grid-row: span 1; 
+}
 
-/* #task-list li:nth-child(4n+1).size-3,
-#task-list li:nth-child(4n+2).size-3 { grid-column: span 3; grid-row: span 1; } */
-#task-list li.size-3 { grid-column: span 3; grid-row: span 1; }
+#task-list li.size-3 { 
+    grid-column: span 3; grid-row: span 1; 
+}
 
-/* #task-list li:nth-child(4n+1).size-4,
-#task-list li:nth-child(4n+2).size-4 { grid-column: span 4; grid-row: span 1; } */
-#task-list li.size-4 { grid-column: span 4; grid-row: span 1; }
+#task-list li.size-4 { 
+    grid-column: span 4; grid-row: span 1; 
+}
 
-/* #task-list li:nth-child(4n+1).size-5,
-#task-list li:nth-child(4n+2).size-5 { grid-column: span 4; grid-row: span 1; } */
-#task-list li.size-5 { grid-column: span 4; grid-row: span 1; }
-
-/* #task-list li:nth-child(4n+3).size-1,
-#task-list li:nth-child(4n+4).size-1 { grid-column: span 1; grid-row: span 1; }
-
-#task-list li:nth-child(4n+3).size-2,
-#task-list li:nth-child(4n+4).size-2 { grid-column: span 1; grid-row: span 2; }
-
-#task-list li:nth-child(4n+3).size-3,
-#task-list li:nth-child(4n+4).size-3 { grid-column: span 1; grid-row: span 3; }
-
-#task-list li:nth-child(4n+3).size-4,
-#task-list li:nth-child(4n+4).size-4 { grid-column: span 1; grid-row: span 4; }
-
-#task-list li:nth-child(4n+3).size-5,
-#task-list li:nth-child(4n+4).size-5 { grid-column: span 1; grid-row: span 4; } */
+#task-list li.size-5 { 
+    grid-column: span 4; grid-row: span 1; 
+}
 
 
 .strikethrough {
@@ -150,7 +136,7 @@ ul {
     gap: 0.5rem;
 }
 
-/* Style the close button */
+/* TASK GRID */
 
 /* Used Gemini assistance to troubleshoot why my display block wasnt working and realised I had to add column view to li: https://gemini.google.com/share/312eda79dcba */
 
@@ -183,6 +169,7 @@ li.empty {
     appearance: none;
     -webkit-appearance: none;
 }
+
 /* Found the above properties from mdn to remove default checkbox visual: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance */
                            
 .custom-check {                             
@@ -221,6 +208,8 @@ li.empty {
     display: none;                      
 }                 
        
+/* CLOSE BUTTON */
+
 /* 2. Pull the X out of the text flow and pin it to the right */
 
 span.close{
@@ -241,11 +230,9 @@ span.close{
     inset-inline-end: var(--radius);
     cursor: pointer;
     color: var(--black);
-    font-size: 2rem;
-    display: flex;                                                 
-    align-items: center;                                           
-    justify-content: center;                                       
-    line-height: 0;          
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .close:hover {
@@ -254,10 +241,12 @@ span.close{
     border-color: white;
 }
 
+/* TASK CONTENT */
+
 .task-name {
     display: block;
     font-weight: 600;
-    text-align: left;
+    text-align: start;
     hyphens: auto;
     overflow-wrap: break-word;
     inline-size: 100%;
@@ -269,6 +258,8 @@ span.close{
     font-size: 0.8em;
     opacity: 0.7;
 }
+
+/* FORM INPUTS */
 
 label {
     font-size: var(--mobile-font);
@@ -297,6 +288,8 @@ input::placeholder {
     color: var(--grey);
 }
 
+/* BUTTONS */
+
 button {
     inline-size: 100%;
     padding: 0.75rem 1rem;
@@ -316,6 +309,8 @@ button:hover {
     background-color: var(--green);
     color: var(--black);
 }
+
+/* ADD BUTTON */
 
 #mobile-add-btn {
     display: flex;
@@ -353,6 +348,8 @@ button:hover {
     transform: rotate(0deg);
 }
 
+/* MINUTE BUTTONS */
+
 #minute-buttons {
       display: flex;                                                            
       flex-wrap: wrap;                    
@@ -378,6 +375,8 @@ button:hover {
   #minute-buttons button:nth-child(3).active { background-color: var(--yellow); color: var(--black); }
   #minute-buttons button:nth-child(4).active { background-color: var(--orange); color: var(--black); }
   #minute-buttons button:nth-child(5).active { background-color: var(--red);    color: var(--black); }
+
+/* PROGRESS BARS */
 
 #progress-bars {
       display: flex;
@@ -472,20 +471,10 @@ button:hover {
     inset-block-start: var(--inset-buttons);
   }
 
-   .task-check:checked + .custom-check {                              
-      background-color: var(--black);                                
-      color: white;
-      border-color: white;                                           
-  }     
-  
   #mobile-add-btn {
       inline-size: 3rem;
       block-size: 3rem;
       border: var(--border-mobile);
-  }
-
-  form > section:last-child {
-      display: none;
   }
 
   form > section:last-child.open {
@@ -502,16 +491,24 @@ button:hover {
    }
 
   /* Mobile sizing — size-1 and size-2 = 2 cols, size-3 through size-5 = 3 cols (full row) */
-  #task-list li.size-1 { grid-column: span 2; grid-row: span 1; }
-  #task-list li.size-2 { grid-column: span 2; grid-row: span 1; }
-  #task-list li.size-3 { grid-column: span 3; grid-row: span 1; }
-  #task-list li.size-4 { grid-column: span 3; grid-row: span 1; }
-  #task-list li.size-5 { grid-column: span 3; grid-row: span 1; }
+  #task-list li.size-1 { 
+    grid-column: span 2; grid-row: span 1; 
+}
+  #task-list li.size-2 { 
+    grid-column: span 2; grid-row: span 1; 
+}
+  #task-list li.size-3 { 
+    grid-column: span 3; grid-row: span 1; 
+}
+  #task-list li.size-4 { 
+    grid-column: span 3; grid-row: span 1; 
+}
+  #task-list li.size-5 { 
+    grid-column: span 3; grid-row: span 1; 
+}
 
   form > section:last-child {
-        inset-inline-start: 50%;
         inset-block-end: 1.5rem;
-        transform: translateX(-50%);
         inline-size: 20rem;
     }
 
