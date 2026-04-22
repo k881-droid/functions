@@ -415,7 +415,65 @@ button:hover {
       transition: inline-size 0.3s ease;
   }
 
-  .svg-mobile { display: none; }          
+  .svg-mobile { display: none; }
+
+/* DIALOG */
+
+dialog {
+    background-color: var(--black);
+    color: white;
+    border-radius: var(--radius);
+    padding: 2rem;
+    flex-direction: column;
+    gap: var(--task-spacing);
+    font-size: var(--spacing);
+    letter-spacing: 0.1em;
+    position: fixed;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%);
+}
+
+dialog[open] {
+    display: flex;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+dialog > div {
+    display: flex;
+    justify-content: center;
+    gap: var(--task-spacing);
+}
+
+#dialog-confirm,
+#dialog-cancel {
+    inline-size: auto;
+    background-color: white;
+    color: var(--black);
+    border-radius: var(--radius);
+    padding: var(--radius);
+    font-size: var(--button-size);
+}
+
+#dialog-confirm:hover,
+#dialog-cancel:hover {
+    background-color: var(--grey);
+}
+
+#dialog-confirm:active {
+    background-color: var(--red);
+    color: var(--black);
+    border-color: var(--red);
+}
+
+#dialog-cancel:active {
+    background-color: var(--green);
+    color: var(--black);
+    border-color: var(--green);
+}
 
   #task-list li.size-1 .task-name {
       padding-inline-end: 2rem;                                      
