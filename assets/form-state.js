@@ -137,6 +137,10 @@ document.querySelector('#some-form').onsubmit = (event) => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
     renderTasks()
 
+    // tag only the newest card so only it gets the pop-in animation
+    let newestCard = document.querySelector('#task-list li:last-child')
+    if (newestCard) newestCard.classList.add('new-task')
+
 // RESET FORM FLOW FUNCTIONS 
 // Each of these ideas for improved usability was given to me by Michael. I just googled scroll behaviours mdn and focus for inputs on mdn and implemented accordingly. 
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView 
@@ -351,8 +355,12 @@ document.querySelector('#some-form').onsubmit = (event) => {
 // Same logic, we are just checking if the tasks are more than 0 at first to trigger 'completion' (if no tasks are present it will divide by 0 and that would cause the site to break)
   document.getElementById('completed-bar').style.width = taskCount > 0 ? (completedCount / taskCount * 100) + '%' : '0%'
 
-// Show the hooray modal when every task in the list is checked off
+// When all tasks are done, pulse the done progress bar and show the hooray modal
   if (taskCount > 0 && completedCount === taskCount) {
+    let doneItem = document.querySelector('#completed-bar').closest('.progress-item')
+    doneItem.classList.remove('complete')
+    void doneItem.offsetWidth // forces a reflow so the animation retriggers each time
+    doneItem.classList.add('complete')
     document.querySelector('#hooray-dialog').showModal()
   }
 }

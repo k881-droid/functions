@@ -21,6 +21,7 @@
     --backdrop: rgba(0, 0, 0, 0.4);
     --tracking: 0.1em;
     --gap-sm: 0.5rem;
+    --ease: ease;
 
 }
 
@@ -222,6 +223,16 @@ ul {
 /* TASK GRID */
 
 /* Used Gemini assistance to troubleshoot why my display block wasnt working and realised I had to add column view to li: https://gemini.google.com/share/312eda79dcba */
+
+@keyframes card-in {
+    0%   { transform: scale(0.85); }
+    65%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.new-task {
+    animation: card-in 0.5s var(--ease);
+}
 
 li {
     position: relative;
@@ -459,7 +470,7 @@ button:hover {
 
 #mobile-add-btn svg {
     transform: rotate(45deg);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s var(--ease);
 }
 
 #mobile-add-btn.open svg {
@@ -505,6 +516,16 @@ button:hover {
     background-color: var(--red);    color: var(--black);
   }
 
+@keyframes progress-complete {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+.progress-item.complete {
+    animation: progress-complete 0.4s var(--ease);
+}
+
 /* PROGRESS BARS */
 
 #progress-bars {
@@ -541,7 +562,7 @@ button:hover {
       block-size: 100%;
       background-color: var(--black);
       border-radius: var(--radius);
-      transition: inline-size 0.3s ease;
+      transition: inline-size 0.3s var(--ease);
   }
 
   .svg-mobile { display: none; }
