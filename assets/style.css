@@ -384,18 +384,23 @@ button:hover {
     }
 
     body{
-        padding: calc(var(--radius));
+        padding: var(--radius);
         font-size: var(--radius);
+        padding-block-start: calc(var(--spacing)*2);;
     }
 
     li{
         border: var(--border-mobile);
     }
 
+
     .progress-label{
         font-size: var(--mobile-font);
     }
 
+    .progress-item{
+        border: var(--border-mobile);
+    }
     ul#task-list{
     gap: calc(var(--task-spacing)/2);
     }
@@ -486,7 +491,7 @@ button:hover {
 }
 
 
-@media (360px <= width <= 764px) {
+@media (360px <= width < 764px) {
     body{
         font-size: calc(var(--spacing)/1.3);
     }
@@ -510,7 +515,7 @@ button:hover {
     .svg-mobile { display: none; }
 }
 
-@media (764px < width < 1024px) {
+@media (764px <= width < 1024px) {
 
      h1{
           font-size: calc(var(--spacing)*2);
