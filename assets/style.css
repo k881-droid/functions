@@ -162,6 +162,7 @@ li.empty {
     color: var(--empty-state);
     border: 0;
     justify-self: center;
+    text-align: center;
 }
 
 
@@ -670,10 +671,14 @@ dialog > div {
       border: var(--border-mobile);
   }
 
+  #mobile-add-btn {
+      z-index: 102;
+  }
+
   form > section:last-child.open {
       display: flex;
       gap: var(--mobile-font);
-      z-index: 99;
+      z-index: 101;
       padding: 0.8rem;
       border: var(--border-mobile);
   }
@@ -722,8 +727,38 @@ dialog > div {
         flex-direction: column;
         gap: 0.75rem;
     }
-    
-    
+
+    #intro-dialog,
+    #hooray-dialog {
+        inline-size: 92vw;
+        max-block-size: 85vh;
+        padding: var(--spacing);
+        gap: var(--task-spacing);
+        overflow-y: auto;
+    }
+
+    #dialog-confirm,
+    #dialog-cancel,
+    .modal-btn {
+        border: var(--border-mobile);
+    }
+
+    #dialog {
+        text-align: center;
+    }
+
+    .intro-title,
+    .hooray-heading {
+        font-size: calc(var(--spacing) * 1.4);
+    }
+
+    .intro-greeting,
+    .intro-description,
+    .intro-tagline,
+    .hooray-message {
+        font-size: var(--mobile-font);
+    }
+
 }
 
 
@@ -765,6 +800,17 @@ dialog > div {
 
     .progress-total {
         display: none;
+    }
+
+    #intro-dialog,
+    #hooray-dialog {
+        inline-size: min(80vw, 36rem);
+        padding: var(--spacing);
+    }
+
+    .intro-title,
+    .hooray-heading {
+        font-size: calc(var(--spacing) * 1.6);
     }
 }
 
