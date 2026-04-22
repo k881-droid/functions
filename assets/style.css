@@ -60,7 +60,7 @@ form > section:last-child {
     inset-block-end: 3rem;
     inset-inline-start: 50%;
     transform: translateX(-50%);
-    inline-size: 420px;
+    inline-size: 26rem;
     background-color: var(--second-bg);
     padding: 1.5rem;
     display: flex;
@@ -264,9 +264,8 @@ span.close{
 }
 
 label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
     letter-spacing: 0.1em;
     color: var(--grey);
     display: block;
@@ -296,7 +295,6 @@ button {
     padding: 0.75rem 1rem;
     background-color: var(--black);
     color: white;
-    border: none;
     border-radius: var(--radius);
     font-size: 1rem;
     cursor: pointer;
@@ -305,6 +303,11 @@ button {
 
 button:hover {
     background-color: var(--grey);
+}
+
+#add:active {
+    background-color: var(--green);
+    color: var(--black);
 }
 
 #mobile-add-btn{
@@ -316,22 +319,26 @@ button:hover {
       flex-wrap: wrap;                    
       gap: 0.5rem;
   }                                                                             
- #minute-buttons button {        
-                                                  
+ #minute-buttons button {
       inline-size: auto;
       padding: 0.5rem 1rem;
-      background-color: white;
-      color: var(--black);                      
-      /* border: var(--border);
-      border-radius: 2rem; */
-      font-size: 0.9rem;                                                        
-  }
-                                                                                
-  #minute-buttons button.active {
       background-color: var(--black);
-      color: white;                           
-      border-color: var(--black);          
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-size: var(--mobile-font);
   }
+
+  #minute-buttons button:hover {
+      background-color: var(--grey);
+  }
+
+  /* Active state: each button gets its category colour */
+  #minute-buttons button:nth-child(1).active { background-color: var(--blue);   color: var(--black); }
+  #minute-buttons button:nth-child(2).active { background-color: var(--green);  color: var(--black); }
+  #minute-buttons button:nth-child(3).active { background-color: var(--yellow); color: var(--black); }
+  #minute-buttons button:nth-child(4).active { background-color: var(--orange); color: var(--black); }
+  #minute-buttons button:nth-child(5).active { background-color: var(--red);    color: var(--black); }
 
 #progress-bars {
       display: flex;
@@ -451,7 +458,7 @@ button:hover {
 
   form > section:last-child.open {
       display: flex;
-      gap: 0.8rem;
+      gap: var(--mobile-font);
       z-index: 99;
       padding: 0.8rem;
       border: var(--border-mobile);
@@ -470,16 +477,15 @@ button:hover {
   #task-list li.size-5 { grid-column: span 3; grid-row: span 1; }
 
   form > section:last-child {
-        inset-inline: 1rem;
+        inset-inline-start: 50%;
         inset-block-end: 1.5rem;
-        inset-inline-start: 1rem;
-        transform: none;
-        inline-size: auto;
+        transform: translateX(-50%);
+        inline-size: 20rem;
     }
 
-    #minute-buttons button {     
-        border: var(--border-mobile);
-    } 
+    #minute-buttons button {
+        border: none;
+    }
     input{
         padding: 0.5rem;
         border: 0;
