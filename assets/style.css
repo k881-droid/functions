@@ -222,9 +222,7 @@ span.close{
     inline-size: 2.5rem;                                                 
     block-size: 2.5rem;            
     border-radius: 50%;
-    border-style: solid;
-    border-width: 0.2rem;
-    border-color: #121212;
+    border: var(--border);
     display: flex;                                                     
     align-items: center;                                               
     justify-content: center;              
@@ -386,7 +384,28 @@ button:hover {
     ul#task-list{
     gap: calc(var(--task-spacing)/2);
     }
-    
+
+    span.close,                                                        
+    .custom-check {                                                    
+      inline-size: calc(var(--spacing)/1.5);                                         
+      block-size: calc(var(--spacing)/1.5); 
+      border: var(--border-mobile);                                        
+    }   
+
+    span.close svg {                                                   
+      width: 0.5rem;                                                   
+      height: 0.5rem;                                                  
+    }                                                                  
+                                                                     
+    .custom-check svg {                                                
+      width: 0.5rem;                                            
+      height: 0.5rem;                                                 
+    }                      
+
+  .custom-check {
+    inset-block-start: calc(var(--spacing)*1.8);
+  }
+
   #mobile-add-btn {
       display: block;
       position: fixed;
@@ -417,19 +436,12 @@ button:hover {
         grid-auto-rows: calc((100vw - 6rem) / 3);
    }
 
-  /* Cap horizontal cards at 3 cols max on mobile so nothing overflows */
-  #task-list li:nth-child(4n+1).size-4,
-  #task-list li:nth-child(4n+2).size-4 { grid-column: span 3; grid-row: span 1; }
-
-  #task-list li:nth-child(4n+1).size-5,
-  #task-list li:nth-child(4n+2).size-5 { grid-column: span 3; grid-row: span 1; }
-
-  /* Cap vertical cards at 3 rows max on mobile */
-  #task-list li:nth-child(4n+3).size-4,
-  #task-list li:nth-child(4n+4).size-4 { grid-column: span 1; grid-row: span 3; }
-
-  #task-list li:nth-child(4n+3).size-5,
-  #task-list li:nth-child(4n+4).size-5 { grid-column: span 1; grid-row: span 3; }
+  /* Mobile sizing — size-1 and size-2 = 2 cols, size-3 through size-5 = 3 cols (full row) */
+  #task-list li.size-1 { grid-column: span 2; grid-row: span 1; }
+  #task-list li.size-2 { grid-column: span 2; grid-row: span 1; }
+  #task-list li.size-3 { grid-column: span 3; grid-row: span 1; }
+  #task-list li.size-4 { grid-column: span 3; grid-row: span 1; }
+  #task-list li.size-5 { grid-column: span 3; grid-row: span 1; }
 
   form > section:last-child {
         inset-inline: 1rem;
