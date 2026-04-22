@@ -366,10 +366,12 @@ button:hover {
       transition: inline-size 0.3s ease;
   }
 
-@media (width < 768px) {
+  .svg-mobile { display: none; }          
+
+@media (width < 764px) {
 
     h1{
-        font-size: calc(var(--spacing)*2)
+        font-size: calc(var(--spacing)*1.8)
     }
 
     body{
@@ -391,20 +393,29 @@ button:hover {
       block-size: calc(var(--spacing)/1.5); 
       border: var(--border-mobile);                                        
     }   
-
-    span.close svg {                                                   
-      width: 0.5rem;                                                   
-      height: 0.5rem;                                                  
-    }                                                                  
-                                                                     
-    .custom-check svg {                                                
-      width: 0.5rem;                                            
-      height: 0.5rem;                                                 
-    }                      
+    
+    .svg-desktop { 
+        display: none; 
+    }
+    .svg-mobile { 
+        display: block; 
+    }                                                                                        
+              
+    span.close {                                                       
+    inset-block-end:  calc(var(--spacing)*1.5); 
+    padding: 0;              
+  }
 
   .custom-check {
-    inset-block-start: calc(var(--spacing)*1.8);
+    inset-block-start: calc(var(--spacing)*1.5);
   }
+
+   .task-check:checked + .custom-check {                              
+      background-color: var(--black);                                
+      color: white;
+      border-color: white;                                           
+  }     
+
 
   #mobile-add-btn {
       display: block;
@@ -461,7 +472,29 @@ button:hover {
     }
 }
 
-@media (768px <= width <= 1024px) {
+
+@media (360px <= width <= 764px) {
+    span.close,
+    .custom-check {
+        inline-size: 2rem;
+        block-size: 2rem;
+    }
+
+    span.close {
+        inset-block-start: 0.75rem;
+        inset-inline-end: 0.75rem;
+    }
+
+    .custom-check {
+        inset-block-start: calc(0.75rem + 2rem + 0.3rem);
+        inset-inline-end: 0.75rem;
+    }
+
+    .svg-desktop { display: block; }
+    .svg-mobile { display: none; }
+}
+
+@media (764px < width) {
     ul {
         grid-template-columns: repeat(4, 1fr);
         grid-auto-rows: calc((100vw - 9.5rem) / 4);

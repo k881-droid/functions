@@ -279,20 +279,27 @@ document.querySelector('#some-form').onsubmit = (event) => {
       <span class="task-time">${taskObject.time} min</span>
       <label class="task-check-label">                                   
       <input type="checkbox" class="task-check"${taskObject.completed ? 'checked' : ''}>                          
-      <span class="custom-check">         
-          <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6.59998 11.6001L16.6 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-          <path d="M6.59998 11.6001L1.59998 6.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+      <span class="custom-check">
+          <svg class="svg-desktop" width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.59998 11.6001L16.6 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M6.59998 11.6001L1.59998 6.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
           </svg>
-       
-      </span>                                                        
+         <svg class="svg-mobile" width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.00224 0.580642C8.32298 0.260144 8.94053 0.357893 9.38194 0.799302C9.82335 1.24071 9.9211 1.85827 9.6006 2.179L4.46807 7.31154C4.14737 7.63223 3.52985 7.53436 3.08836 7.09288C2.64688 6.6514 2.54901 6.03387 2.86971 5.71318L8.00224 0.580642Z" fill="currentColor"/>
+            <path d="M0.60543 4.60946C0.271043 4.27495 0.357673 3.64623 0.799119 3.20479C1.24057 2.76334 1.86928 2.67671 2.20379 3.0111L4.88044 5.68775C5.21493 6.02224 5.12824 6.65094 4.68675 7.09242C4.24527 7.5339 3.61657 7.6206 3.28208 7.28611L0.60543 4.60946Z" fill="currentColor"/>
+          </svg>
+      </span>
   </label>
 
-      <span class="close">	 
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1.59998 11.6001L11.6 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-        <path d="M11.6 11.6001L1.59997 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-        </svg>   
+      <span class="close">
+          <svg class="svg-desktop" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.59998 11.6001L11.6 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M11.6 11.6001L1.59997 1.6001" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+          <svg class="svg-mobile" width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.82938 0.810996C6.27735 0.36303 7.00325 0.36303 7.45122 0.810996C7.89918 1.25896 7.89918 1.98486 7.45122 2.43283L2.43275 7.4513C1.98478 7.89926 1.25888 7.89926 0.810916 7.4513C0.36295 7.00333 0.36295 6.27743 0.810916 5.82947L5.82938 0.810996Z" fill="currentColor"/>
+            <path d="M2.43282 0.810996C1.98486 0.36303 1.25896 0.36303 0.810991 0.810996C0.363025 1.25896 0.363025 1.98486 0.810991 2.43283L5.82946 7.4513C6.27743 7.89926 7.00333 7.89926 7.45129 7.4513C7.89926 7.00333 7.89926 6.27743 7.45129 5.82947L2.43282 0.810996Z" fill="currentColor"/>
+          </svg>
       </span>        
   `
 // New created task with all of the features above is added to our task list 
