@@ -1,5 +1,8 @@
 :root {
     --spacing: 1.8rem;
+    --doublespacing: calc(var(--spacing)*2);
+    --inset-buttons: calc(var(--spacing)*1.5);
+    --button-size: calc(var(--spacing)/1.5);
     --task-spacing: 1.4rem;
     --mobile-font: 1rem;
     --border: 0.2rem solid #121212;  
@@ -23,8 +26,8 @@ body {
     font-size: var(--spacing);
     font-style: normal;
 	display: grid;
-	gap: calc(var(--spacing)*2);
-	padding: calc(var(--spacing)*2);
+	gap: var(--doublespacing);
+	padding: var(--doublespacing);
     background-color: var(--background);
 }
 
@@ -153,7 +156,7 @@ ul {
 
 li {
     position: relative;
-    padding: 1rem;
+    padding: var(--radius);
     border: var(--border);
     border-radius: var(--radius);
     display: flex;
@@ -194,8 +197,8 @@ li.empty {
     background-color: white;
     color: var(--black);
     position: absolute;                                            
-    inset-inline-end: 1rem;
-    inset-block-start: calc(1rem + 2.5rem + 0.5rem); /* top padding
+    inset-inline-end: var(--radius);
+    inset-block-start: calc(var(--radius) + 2.5rem + 0.5rem); /* top padding
    + X height + gap */                        
   }                                                                               
    
@@ -235,7 +238,7 @@ span.close{
 }
 .close {
     position: absolute;
-    inset-inline-end: 1rem;
+    inset-inline-end: var(--radius);
     cursor: pointer;
     color: var(--black);
     font-size: 2rem;
@@ -268,7 +271,7 @@ span.close{
 }
 
 label {
-    font-size: 1rem;
+    font-size: var(--mobile-font);
     font-weight: 600;
     letter-spacing: 0.1em;
     color: var(--grey);
@@ -279,7 +282,7 @@ input {
     inline-size: 100%;
     padding: 0.8rem 1rem;
     border-radius: 0.6rem;
-    font-size: 1rem;
+    font-size: var(--mobile-font);
     background-color: white;
     outline: none;
     font-family: inherit;
@@ -300,7 +303,7 @@ button {
     background-color: var(--black);
     color: white;
     border-radius: var(--radius);
-    font-size: 1rem;
+    font-size: var(--mobile-font);
     cursor: pointer;
     font-family: inherit;
 }
@@ -387,7 +390,7 @@ button:hover {
       flex-direction: column;
       gap: var(--task-spacing);
       background-color: var(--second-bg);
-      padding: 1rem;
+      padding: var(--radius);
       border-radius: var(--radius);
       border: var(--border);
   }
@@ -428,7 +431,7 @@ button:hover {
     body{
         padding: var(--radius);
         font-size: var(--radius);
-        padding-block-start: calc(var(--spacing)*2);
+        padding-block-start: var(--doublespacing);
     }
 
     li{
@@ -448,8 +451,8 @@ button:hover {
 
     span.close,                                                        
     .custom-check {                                                    
-      inline-size: calc(var(--spacing)/1.5);                                         
-      block-size: calc(var(--spacing)/1.5); 
+      inline-size: var(--button-size);
+      block-size: var(--button-size);
       border: var(--border-mobile);                                        
     }   
     
@@ -461,12 +464,12 @@ button:hover {
     }                                                                                        
               
     span.close {                                                       
-    inset-block-end:  calc(var(--spacing)*1.5); 
+    inset-block-end: var(--inset-buttons);
     padding: 0;              
   }
 
   .custom-check {
-    inset-block-start: calc(var(--spacing)*1.5);
+    inset-block-start: var(--inset-buttons);
   }
 
    .task-check:checked + .custom-check {                              
@@ -561,7 +564,7 @@ button:hover {
 @media (764px <= width < 1024px) {
 
      h1{
-          font-size: calc(var(--spacing)*2);
+          font-size: var(--doublespacing);
     }
     ul {
         grid-template-columns: repeat(4, 1fr);
